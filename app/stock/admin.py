@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Movement
+from .models import Category, Product
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price', 'quantity', 'category')
     list_filter = ('category', )
 
-@admin.register(Movement)
+"""@admin.register(Movement)
 class MovementAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ('product', 'quantity', 'date')
+    list_display = ('product', 'quantity', 'date')"""

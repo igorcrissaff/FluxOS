@@ -14,6 +14,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     id = models.CharField(max_length=15, primary_key=True)
+    photo = models.ImageField(verbose_name='foto', upload_to='products/', blank=True, null=True)
     name = models.CharField(verbose_name='nome', max_length=100)
     price = models.DecimalField(verbose_name='preço', max_digits=5, decimal_places=2)
     quantity = models.IntegerField(verbose_name='quantidade', default=0)
@@ -24,25 +25,26 @@ class Product(models.Model):
         verbose_name_plural = _('Produtos')
 
     def __str__(self):
-        return f"{self.id} - {self.name}"
+        return f"{self.name}"
     
-    def to_json(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'price': float(self.price),
-            'quantity': self.quantity,
-            'Category': self.Category.name
-        }
-    
+
+"""# Abstract class
 class Movement(models.Model):
     product = models.ForeignKey(Product, verbose_name='produto', on_delete=models.CASCADE)
     quantity = models.IntegerField(verbose_name='quantidade')
     date = models.DateTimeField(verbose_name='data', auto_now_add=True)
 
     class Meta:
-        verbose_name = _('Movimentação')
-        verbose_name_plural = _('Movimentações')
+        abstract = True
+        default_permissions = ('add', 'delete', 'view')
 
-    def __str__(self):
-        return f"{self.Product} - {self.quantity}"
+
+class Input(Movement):
+    class Meta:
+        verbose_name = _('Entrada')
+        verbose_name_plural = _('Entradas')
+
+class Output(Movement):
+    class Meta:
+        verbose_name = _('Saída')
+        verbose_name_plural = _('Saídas')"""

@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'stock.apps.StockConfig',
 ]
 
@@ -53,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'gestech.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'gestech.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -127,10 +126,53 @@ STATIC_URL = 'static/'
 #    os.path.join(BASE_DIR, 'static')
 #]
 
+# Custom settings for file upload
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Jazzmin Configuration
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Gestech",
 
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Gestech",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Gestech",
+    
+    # Copyright on the footer
+    "copyright": "Mosaic Sistemas",
+
+    # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
+    "order_with_respect_to": ["auth", "stock", "stock.product"],
+
+    # List of model admins to search from the search bar, search bar omitted if excluded
+    # If you want to use a single search field you dont need to use a list, you can use a simple string 
+    "search_model": ["auth.User", "stock.Product"],
+
+    # Custom icons for side menu apps/models
+    "icons": {
+        "admin": "fas fa-user-cog",
+
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+
+        'stock': 'fas fa-box',
+        'stock.stock': 'fas fa-boxes',
+        'stock.product': 'fas fa-box-open',
+        'stock.category': 'fas fa-tags',
+        'stock.movement': 'fas fa-truck-loading',
+    },
+
+    # Icons that are used when one is not manually specified
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+
+}
