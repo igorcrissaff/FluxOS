@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="80aa42ae-43df-41b4-ba23-9560c3790d0d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/base.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/base.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/jquery-ui.theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/jquery-ui.theme.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/jquery-ui.theme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/select2.theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/select2.theme.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/static/jet/css/themes/mosaic/select2.theme.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/media/products/digital-id.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sales/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/migrations/0002_alter_product_options_product_photo_delete_movement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/stock/views.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="347EHVGCHlT2o7rIyUao47dh8qV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/igorc/Desktop/projetos/gestech"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-164cda30dcd9-0af03a5fa574-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26830.99" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80aa42ae-43df-41b4-ba23-9560c3790d0d" name="Changes" comment="" />
+      <created>1760556122432</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760556122432</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -398,4 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 # App 
-gestech-app/venv/
+venv/
