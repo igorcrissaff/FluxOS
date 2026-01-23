@@ -9,22 +9,21 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Estoque</h1>
     <p class="mb-4">
-        DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.
-            
+        Gerencie seu estoque e seus produtos cadastrados <br>
+        <a href="{% url 'create_product' %}">Cadastrar novo produto</a>.
     </p>
 
-    <!-- Summary Cards -->
-    <div class="row">
-        <!-- Stock Cost -->
+    <!-- Summary Cards-->
+     <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Custo do Estoque</div>
+                                Earnings (Monthly)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                         </div>
                         <div class="col-auto">
@@ -35,14 +34,14 @@
             </div>
         </div>
 
-        <!-- Stock Value -->
+        <!-- Earnings (Annual) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Valor do Estoque</div>
+                                Earnings (Annual)</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
                         </div>
                         <div class="col-auto">
@@ -53,13 +52,13 @@
             </div>
         </div>
 
-        <!-- Active products -->
+        <!-- Tasks Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Produtos em estoque
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
@@ -82,14 +81,14 @@
             </div>
         </div>
 
-        <!-- Products out of stock -->
+        <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Produtos fora de estoque</div>
+                                Pending Requests</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                         </div>
                         <div class="col-auto">
@@ -133,7 +132,7 @@
                             <th>Preço</th>
                             <th>Quantidade</th>
                             <th>Categoria</th>
-                            <th>Disponibilidade</th>
+                            
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -144,7 +143,7 @@
                             <th>Preço</th>
                             <th>Quantidade</th>
                             <th>Categoria</th>
-                            <th>Disponibilidade</th>
+                           
                             <th>Ações</th>
                         </tr>
                     </tfoot>
@@ -160,12 +159,12 @@
                             <td>R${{ product.price }}</td>
                             <td>{{ product.quantity }}</td>
                             <td>{{ product.category }}</td>
-                            <td>{{ product.avaliable }}</td>
+                        
                             <td>
-                                <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                <a href="{% url 'edit_product' product.id %}" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-circle btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
@@ -183,6 +182,8 @@
     </div>
 
 </div>
+
+
 {% endblock %}
 
 {% block extra_scripts %}

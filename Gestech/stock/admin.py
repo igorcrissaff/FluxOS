@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     search_fields = ('id__startswith', 'name__startswith')
-    list_display = ('id', 'name', 'price', 'quantity', 'category', 'avaliable')
+    list_display = ('id', 'sku', 'name', 'price', 'quantity', 'category')
     list_filter = ('category',)
     actions = ['set_avaliable', 'set_unavaliabe']
 

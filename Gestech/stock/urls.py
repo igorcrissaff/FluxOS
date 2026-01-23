@@ -4,9 +4,11 @@ from . import views
 urlpatterns = [
     # Web App URLs
     path('', views.index, name='index'),
-    path('get/<str:product_id>/', views.get_product, name='get_product'),
-    path('list/', views.list_products, name='list_products'),
-    path('create/', views.create_product, name='create_product'),
-    path('update/<str:product_id>/', views.update_product, name='update_product'),
-    path('delete/<str:product_id>/', views.delete_product, name='delete_product'),
+    path('product/create/', views.create_product, name='create_product'),
+    path('product/edit/<str:product_id>/', views.edit_product, name='edit_product'),
+    path('product/delete/<str:product_id>/', views.delete_product, name='delete_product'),
+
+    path('categories/', views.categories_view, name='categories'),
+    path('category/edit/<str:category_id>/', views.edit_category, name='edit_category'),
+    path('category/delete/<str:category_id>/', views.delete_category, name='delete_category'),
 ]
