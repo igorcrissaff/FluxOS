@@ -7,10 +7,10 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Estoque</h1>
+    <h1 class="h3 mb-2 text-gray-800">Stock</h1>
     <p class="mb-4">
-        Gerencie seu estoque e seus produtos cadastrados <br>
-        <a href="{% url 'create_product' %}">Cadastrar novo produto</a>.
+        Manage your stock and registered products <br>
+        <a href="{% url 'create_product' %}">Register new product</a>.
     </p>
 
     <!-- Summary Cards-->
@@ -104,7 +104,7 @@
     <div class="card shadow mb-4">
         <!-- Card Header -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Produtos</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -112,11 +112,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                     aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Ações:</div>
-                    <a class="dropdown-item" href="#">Exportar</a>
-                    <a class="dropdown-item" href="#">Importar</a>
+                    <div class="dropdown-header">Actions:</div>
+                    <a class="dropdown-item" href="#">Export</a>
+                    <a class="dropdown-item" href="#">Import</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'create_product' %}">Cadastrar produto</a>
+                    <a class="dropdown-item" href="{% url 'create_product' %}">Register product</a>
                 </div>
             </div>
         </div>
@@ -128,23 +128,23 @@
                     <thead>
                         <tr>
                             <th>SKU</th>
-                            <th>Nome</th>
-                            <th>Preço</th>
-                            <th>Quantidade</th>
-                            <th>Categoria</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
                             
-                            <th>Ações</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>SKU</th>
-                            <th>Nome</th>
-                            <th>Preço</th>
-                            <th>Quantidade</th>
-                            <th>Categoria</th>
-                           
-                            <th>Ações</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            
+                            <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>

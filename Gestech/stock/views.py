@@ -1,12 +1,11 @@
 import json
-from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import *
-from . import crud
 
-
+@login_required
 def index(request):
-    products = crud.list_products()
+    products = Product.objects.all()
 
     return render(
         request,           
@@ -16,6 +15,7 @@ def index(request):
             }
         )
 
+@login_required
 def create_product(request):
     if request.method == "POST":
         form = ProductForm(request.POST)
@@ -30,6 +30,7 @@ def create_product(request):
         form = ProductForm()
         return render(request, 'product.html', {'form': form})
 
+@login_required
 def edit_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
 
@@ -44,11 +45,13 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
         return render(request, 'product.html', {'form': form})
 
+@login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
     return redirect(index, permanent=True)
 
+@login_required
 def categories_view(request):
     categories = Category.objects.all()
     if request.method == "POST":
@@ -64,6 +67,7 @@ def categories_view(request):
     form = CategoryForm()
     return render(request, 'categories.html', {'form': form, 'categories': categories})
 
+@login_required
 def edit_category(request, category_id):
     categories = Category.objects.all()
     category = get_object_or_404(Category, id=category_id)
@@ -79,6 +83,7 @@ def edit_category(request, category_id):
         form = CategoryForm(instance=category)
         return render(request, 'categories.html', {'form': form, 'categories': categories})
     
+@login_required
 def delete_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     category.delete()

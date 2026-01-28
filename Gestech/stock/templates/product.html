@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+
+{% load widget_tweaks %}
 {% load static %}
 
 {% block title %}Gestech{% endblock %}
@@ -7,7 +9,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Informações do Produto</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Product Information</h6>
     </div>
     <div class="card-body">
         <form class="form" method="post">
@@ -16,8 +18,8 @@
             {{ form.non_field_errors }}
             
             <div class="form-group">
-                <label for="{{ form.name.id_for_label }}">Nome:</label>
-                {{ form.name }}
+                <label for="{{ form.name.id_for_label }}">Name:</label>
+                {{ form.name | add_class:"form-control" }}
                 {{ form.name.errors }}
             </div>
 
@@ -25,14 +27,14 @@
             <div class="row">
                 <div class="col form-group">
                     
-                    <label for="{{ form.price.id_for_label }}">Preço:</label>
-                    {{ form.price }}
+                    <label for="{{ form.price.id_for_label }}">Price:</label>
+                    {{ form.price | add_class:"form-control" }}
                     {{ form.price.errors }}
                 </div>
 
                 <div class="col form-group">
-                    <label for="{{ form.category.id_for_label }}">Categoria:</label>
-                    {{ form.category }}
+                    <label for="{{ form.category.id_for_label }}">Category:</label>
+                    {{ form.category | add_class:"form-control" }}
                     {{ form.category.errors }}
                 </div>
             </div>
@@ -41,19 +43,19 @@
             <div class="row">
                 <div class="col form-group">
                     <label for="{{ form.sku.id_for_label }}">SKU:</label>
-                    {{ form.sku }}
+                    {{ form.sku | add_class:"form-control" }}
                     {{ form.sku.errors }}
                 </div>
 
                 <div class="col form-group">
-                    <label for="{{ form.quantity.id_for_label }}">Quantidade:</label>
-                    {{ form.quantity }}
+                    <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
+                    {{ form.quantity | add_class:"form-control" }}
                     {{ form.quantity.errors }}
                 </div>
             </div>
             
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
             
         </form>

@@ -1,13 +1,5 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-    
-{% block extra_head %}
-    {% include "head.html" %}
-{% endblock %}
-
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -53,7 +45,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    
+    <!-- Logout Modal-->
+    {% include "logout_modal.html" %}
 
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -69,5 +62,3 @@
      {% block extra_scripts %}{% endblock %}
 
 </body>
-
-</html>
