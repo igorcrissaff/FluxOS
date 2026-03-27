@@ -4,7 +4,9 @@ from django.utils.translation import gettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(verbose_name='nome', max_length=100)
-    ascending = models.ForeignKey('self', verbose_name='categoria ascendente', on_delete=models.CASCADE, null=True, blank=True)
+    
+    # Ascending category not implemented yet
+    # ascending = models.ForeignKey('self', verbose_name='categoria ascendente', on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Categoria')
@@ -16,10 +18,9 @@ class Category(models.Model):
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
-        fields = ['name', 'ascending']
+        fields = ['name']
         labels = {
             'name': _('Nome'),
-            'ascending': _('Categoria Ascendente'),
         }
 
 class Product(models.Model):

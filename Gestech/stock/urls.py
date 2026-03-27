@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     # Web App URLs
-    path('', views.index, name='index'),
+    path('', views.stock_index, name='stock_index'),
     path('product/create/', views.create_product, name='create_product'),
     path('product/edit/<str:product_id>/', views.edit_product, name='edit_product'),
     path('product/delete/<str:product_id>/', views.delete_product, name='delete_product'),

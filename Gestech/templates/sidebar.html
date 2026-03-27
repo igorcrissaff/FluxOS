@@ -29,7 +29,7 @@
 
     <!-- Nav Item - Stock Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'index' %}" data-toggle="collapse" data-target="#collapseStock"
+        <a class="nav-link collapsed" href="{% url 'stock_index' %}" data-toggle="collapse" data-target="#collapseStock"
             aria-expanded="true" aria-controls="collapseStock">
             <i class="fas fa-fw fa-boxes"></i>
             <span>Stock</span>
@@ -37,7 +37,7 @@
         <div id="collapseStock" class="collapse" aria-labelledby="headingStock" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="{% url 'index' %}">Products</a>
+                <a class="collapse-item" href="{% url 'stock_index' %}">Products</a>
                 <a class="collapse-item" href="{% url 'categories' %}">Categories</a>
             </div>
         </div>
@@ -91,7 +91,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="utilities-color.html">Users</a>
+                <a class="collapse-item" href="{% url 'users_index' %}">Users</a>
                 <a class="collapse-item" href="utilities-border.html">Roles</a>
             </div>
         </div>

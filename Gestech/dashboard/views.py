@@ -9,13 +9,14 @@ def dashboard(request):
 
 @login_required
 def profile(request):
-    user = request.user
     if request.method == 'POST':
+        user = request.user
         form = UserChangeForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
 
     if request.method == 'GET':
+        user = request.user
         form = UserChangeForm(instance=user)
 
     return render(request, 'profile.html', {'user': user, 'form': form})

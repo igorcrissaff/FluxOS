@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gestech - Estoque{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Users</h1>
+    <p class="mb-4">
+        Manage your users and registered roles <br>
+        <a href="{% url 'create_user' %}">Register new user</a>.
+    </p>
+
+
+    <!-- Products Table -->
+    <div class="card shadow mb-4">
+        <!-- Card Header -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                    aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Actions:</div>
+                    <a class="dropdown-item" href="#">Export</a>
+                    <a class="dropdown-item" href="#">Import</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'create_user' %}">Register user</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.email }}</td>
+                        
+                            <td>
+                                <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6">No products available.</td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock %}

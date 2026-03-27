@@ -1,19 +1,29 @@
-import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 
 @login_required
-def index(request):
+def stock_index(request):
+    # Fecht all products
     products = Product.objects.all()
 
+    # Calculate stock value
+    stock_value = sum(product.price * product.quantity for product in products)
+
+    # Calculate total stock
+    total_stock = sum(product.quantity for product in products)
+
+    # Get products out of stock
+    products_out_of_stock = products.filter(quantity=0)
+
     return render(
-        request,           
-        'index.html', 
+        request, 'products.html', 
         {
             'products': products, 
-            }
-        )
+            'stock_value': stock_value,
+            'total_stock': total_stock,
+            'products_out_of_stock': products_out_of_stock
+            })
 
 @login_required
 def create_product(request):
@@ -22,13 +32,13 @@ def create_product(request):
         if form.is_valid():
             product = form.save()
             product.save()
-            return redirect(index, permanent=True)
+            return redirect(stock_index, permanent=True)
         
         else:
-            return render(request, 'product.html', {'form': form})
+            return render(request, 'product_form.html', {'form': form})
     else:
         form = ProductForm()
-        return render(request, 'product.html', {'form': form})
+        return render(request, 'product_form.html', {'form': form})
 
 @login_required
 def edit_product(request, product_id):
@@ -38,18 +48,18 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
-            return redirect(index, permanent=True)
+            return redirect(stock_index, permanent=True)
         else:
-            return render(request, 'product.html', {'form': form})
+            return render(request, 'product_form.html', {'form': form})
     else:
         form = ProductForm(instance=product)
-        return render(request, 'product.html', {'form': form})
+        return render(request, 'product_form.html', {'form': form})
 
 @login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
-    return redirect(index, permanent=True)
+    return redirect(stock_index, permanent=True)
 
 @login_required
 def categories_view(request):
