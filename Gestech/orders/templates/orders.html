@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Gestech - Estoque{% endblock %}
+{% block title %}Gestech - Orders{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
@@ -10,13 +10,13 @@
      <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
         <div>
-            <h1 class="h3 mb-2 text-gray-800">Stock</h1>
+            <h1 class="h3 mb-2 text-gray-800">Orders</h1>
             <p class="mb-4">
-                Manage your stock and registered products <br>
+                Manage your orders and customer information <br>
             </p>
         </div>
-        <a href="{% url 'create_product' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Register Product </a>
+        <a href="{% url 'create_order' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Create Order </a>
 
     </div>
     
@@ -32,7 +32,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Stock Value</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ stock_value }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ pending_orders.count }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -125,45 +125,45 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>SKU</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Category</th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Status</th>
                             
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>SKU</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Category</th>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Status</th>
                             
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        {% for product in products %}
+                        {% for order in orders %}
                         <tr>
-                            <td>{{ product.sku }}</td>
+                            <td>{{ order.order_number }}</td>
                             <td>
-                                <a href="{% url 'edit_product' product.id %}">
-                                    {{ product.name }}
+                                <a href="{% url 'view_product' order.id %}">
+                                    {{ order.customer.name }}
                                 </a> 
                             </td>
-                            <td>R${{ product.price }}</td>
-                            <td>{{ product.quantity }}</td>
-                            <td>{{ product.category }}</td>
+                            <td>{{ order.order_date }}</td>
+                            <td>{{ order.status }}</td>
                         
                             <td>
-                                <a href="{% url 'edit_product' product.id %}" class="btn btn-warning btn-circle btn-sm">
+                                <a href="{% url 'view_order' order.id %}" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{% url 'edit_order' order.id %}" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
+                                <a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-cancel"></i>
                                 </a>
                                 </button>
                             </td>

@@ -44,6 +44,7 @@
     </li>
 
     <!-- Nav Item - Orders Collapse Menu -->
+    
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
             aria-expanded="true" aria-controls="collapseOrders">
@@ -54,14 +55,15 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="#">All Orders</a>
+                <a class="collapse-item" href="{% url 'orders_index' %}">All Orders</a>
                 <a class="collapse-item" href="#">Pending Orders</a>
                 <a class="collapse-item" href="#">Finished Orders</a>
             </div>
         </div>
     </li>
-
+    
     <!-- Nav Item - Finances Collapse Menu -->
+    <!--
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinances"
             aria-expanded="true" aria-controls="collapseFinances">
@@ -79,12 +81,23 @@
             </div>
         </div>
     </li>
+    -->
+
+    <!-- Nav Item - Customers -->
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'customers_index' %}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Customers</span>
+        </a>
+    </li>
+
 
     <!-- Nav Item - Users Collapse Menu -->
+    <!--
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
             aria-expanded="true" aria-controls="collapseUsers">
-            <i class="fas fa-fw fa-users"></i>
+            <i class="fas fa-fw fa-user-helmet-safety"></i>
             <span>Users</span>
         </a>
         <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers"
@@ -96,31 +109,9 @@
             </div>
         </div>
     </li>
- 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    -->
 
-    <!-- Nav Item - Settings Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapseSettings">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Settings</span>
-        </a>
-        <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="#">Login</a>
-                <a class="collapse-item" href="#">Register</a>
-                <a class="collapse-item" href="#">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="#">404 Page</a>
-                <a class="collapse-item active" href="#">Blank Page</a>
-            </div>
-        </div>
-    </li>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

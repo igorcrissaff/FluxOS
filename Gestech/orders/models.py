@@ -1,30 +1,28 @@
 from django.db import models
+from django.forms import ModelForm
 
-# Create your models here.
-class Customer(models.Model):
-    # Personal information fields
-    name = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=20)
-    
-    # Address fields
-    state = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    street = models.CharField(max_length=255)
-    house_number = models.CharField(max_length=20)
-
-    @property
-    def address(self):
-        return f"{self.street}, {self.house_number} - {self.city} - {self.state}"
-
-    def __str__(self):
-        return self.name
+class OrderStatus(models.TextChoices):
+    PENDING = 'Pending', 'Pending'
+    COMPLETED = 'Completed', 'Completed'
+    CANCELED = 'Canceled', 'Canceled'
+    SHIPPED = 'Shipped', 'Shipped'
+    RETURNED = 'Returned', 'Returned'
 
 class Order(models.Model):
-    order_number = models.CharField(max_length=100)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    # Order Info
+    order_number = models.CharField(max_length=100, unique=True)
+    customer = models.ForeignKey('customers.Customer', on_delete=models.SET_NULL, null=True, blank=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    content = models.ManyToManyField('stock.Product', through='OrderItem')
-    status = models.CharField(max_length=50, default='Pending')
+    items = models.ManyToManyField('stock.Product', through='OrderItem')
+    status = models.TextField(choices=OrderStatus.choices, default=OrderStatus.PENDING)
 
     def __str__(self):
         return self.order_number
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey('stock.Product', on_delete=models.SET_NULL, null=True, blank=True)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name} for Order {self.order.order_number}"

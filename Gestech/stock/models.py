@@ -24,11 +24,14 @@ class CategoryForm(ModelForm):
         }
 
 class Product(models.Model):
+    # Product Info
     sku = models.CharField(verbose_name='sku', max_length=20, unique=True)  
     name = models.CharField(verbose_name='nome', max_length=100)
     price = models.DecimalField(verbose_name='preço', max_digits=10, decimal_places=2)
     quantity = models.IntegerField(verbose_name='quantidade', default=0)
     category = models.ForeignKey(Category, verbose_name='categoria', on_delete=models.SET_NULL, null=True)
+    # cost_price = models.DecimalField(verbose_name='preço de custo', max_digits=10, decimal_places=2, null=True, blank=True)  # Optional cost price
+    
     class Meta:
         verbose_name = _('Produto')
         verbose_name_plural = _('Produtos')

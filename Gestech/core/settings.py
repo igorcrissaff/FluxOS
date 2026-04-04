@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     
     'stock.apps.StockConfig',
+    'orders.apps.OrdersConfig',
+    'customers.apps.CustomersConfig',
     'members.apps.MembersConfig',
     'dashboard.apps.DashBoardConfig',
 ]
