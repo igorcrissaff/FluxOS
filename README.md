@@ -37,39 +37,39 @@ An Open Source Commercial Management application focused on streamlining sales o
 
 ### 5. Supplier & Procurement
 
-* Supplier registration and management
-* Purchase orders and supply tracking
-* Cost control and restocking
+* Supplier registration and management # In development
+* Purchase orders and supply tracking # In development
+* Cost control and restocking # In development
 
 ### 6. Financial Overview
 
-* Accounts receivable tracking
-* Payment status and reconciliation
-* Basic revenue and cash flow visibility
+* Accounts receivable tracking # In development
+* Payment status and reconciliation # In development
+* Basic revenue and cash flow visibility # In development
 
 ### 7. Reporting & Dashboards
 
-* Sales performance metrics
-* Inventory and product insights
-* Customer behavior analysis
+* Sales performance metrics # In development
+* Inventory and product insights # In development
+* Customer behavior analysis # In development
 
 ### 8. User & Access Control
 
 * Role-based permissions
 * Secure authentication
-* Activity tracking
+* Activity tracking # In development
 
 ### 9. Notifications & Alerts
 
-* Low stock alerts
-* Order status updates
-* Payment reminders
+* Low stock alerts # In development
+* Order status updates # In development
+* Payment reminders # In development
 
 ### 10. Integration & Scalability
 
-* API support for external systems
+* API support for external systems # In development
 * Modular design for future expansion
-* Integration with accounting or ERP systems
+* Integration with accounting or ERP systems # In development
 
 ## 🛠️ Tech Stack
 
