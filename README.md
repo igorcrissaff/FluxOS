@@ -70,6 +70,7 @@ An Open Source Commercial Management application focused on streamlining sales o
 * API support for external systems       *# In development*
 * Modular design for future expansion
 * Integration with accounting            *# In development*
+* Integration with Woocommerce           *# In development*
 
 ## 🛠️ Tech Stack
 
