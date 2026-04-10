@@ -2,6 +2,13 @@
 
 An Open Source Commercial Management application focused on streamlining sales operations, customer relationships, and inventory control, providing full visibility over the commercial lifecycle.
 
+## 💎 Primary Goals
+
+* Improve sales efficiency and visibility
+* Enhance customer relationship management
+* Reduce operational errors through automation
+* Support data-driven commercial decisions
+
 ## ✨ Core Functionalities
 
 ### 1. Customer Management
@@ -63,13 +70,6 @@ An Open Source Commercial Management application focused on streamlining sales o
 * API support for external systems
 * Modular design for future expansion
 * Integration with accounting or ERP systems
-
-## Key Value
-
-* Improves sales efficiency and visibility
-* Enhances customer relationship management
-* Reduces operational errors through automation
-* Supports data-driven commercial decisions
 
 ## 🛠️ Tech Stack
 
