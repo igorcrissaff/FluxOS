@@ -131,9 +131,9 @@ Gestech/
 ├── orders/              # Order management domain
 ├── stock/               # Inventory management domain
 ├── static/              # Global static assets
-│   ├── css/
-│   ├── js/
-│   ├── img/
+│   ├── css/             # Custom CSS
+│   ├── js/              # Custom Javascript
+│   ├── img/             # Assets
 |   └── vendor/          # Frontend Libraries
 └── templates/           # Global templates
     └── registration/
