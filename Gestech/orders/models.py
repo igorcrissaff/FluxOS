@@ -1,5 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
+from customers.models import Customer
+from stock.models import Product
 
 class OrderStatus(models.TextChoices):
     PENDING = 'Pending', 'Pending'
@@ -9,7 +11,6 @@ class OrderStatus(models.TextChoices):
     RETURNED = 'Returned', 'Returned'
 
 class Order(models.Model):
-    # Order Info
     order_number = models.CharField(max_length=100, unique=True)
     customer = models.ForeignKey('customers.Customer', on_delete=models.SET_NULL, null=True, blank=True)
     order_date = models.DateTimeField(auto_now_add=True)
@@ -17,7 +18,7 @@ class Order(models.Model):
     status = models.TextField(choices=OrderStatus.choices, default=OrderStatus.PENDING)
 
     def __str__(self):
-        return self.order_number
+        return f"Order {self.order_number} for {self.customer.name if self.customer else 'Unknown Customer'}"
     
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -26,3 +27,8 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name} for Order {self.order.order_number}"
+    
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['order_number', 'customer', 'items', 'status']

@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Order
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Order, OrderForm
 
 # Create your views here.
 def orders_index(request):
@@ -11,13 +11,23 @@ def orders_index(request):
     shipped_orders = orders.filter(status='Shipped')
     returned_orders = orders.filter(status='Returned')
 
-    raise NotImplementedError("This view is not implemented yet")
+    return render(request, 'orders_index.html', {orders: orders})
 
 def view_order(request, order_id):
     raise NotImplementedError("This view is not implemented yet")
 
 def create_order(request):
-    raise NotImplementedError("This view is not implemented yet")
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(orders_index, permanent=True)
+        
+        else:
+            return render(request, 'order_form.html', {'form': form})
+    else:
+        form = OrderForm()
+        return render(request, 'order_form.html', {'form': form})
 
 def edit_order(request, order_id):
     raise NotImplementedError("This view is not implemented yet")

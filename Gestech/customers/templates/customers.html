@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gestech - Estoque{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+     <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+        <div>
+            <h1 class="h3 mb-2 text-gray-800">Customers</h1>
+            <p class="mb-4">
+                Manage your customers <br>
+            </p>
+        </div>
+        <a href="{% url 'create_customer' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                class="fas fa-plus fa-sm text-white-50"></i> Register Customer </a>
+
+    </div>
+    
+    <!-- Customers Table -->
+    <div class="card shadow mb-4">
+        <!-- Card Header -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Customers</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                    aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Actions:</div>
+                    <a class="dropdown-item" href="#">Export</a>
+                    <a class="dropdown-item" href="#">Import</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'create_customer' %}">Register customer</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for customer in customers %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'edit_customer' customer.id %}">
+                                    {{ customer.name }}
+                                </a> 
+                            </td>
+                            <td>{{ customer.phone }}</td>
+                            <td>{{ customer.address }}</td>
+                        
+                            <td>
+                                <!-- View Details
+                                Not Implemented Yet
+                                <a href="{% url 'view_customer' customer.id %}" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                -->
+                                
+                                <a href="{% url 'edit_customer' customer.id %}" class="btn btn-warning btn-circle btn-sm">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="{% url 'delete_customer' customer.id %}" class="btn btn-danger btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                                </button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6">No customers available. <a href="{% url 'create_customer' %}">Register your first customer</a></td>
+                        </tr>
+                        {% endfor %}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Product Delete Modal -->
+<!-- Need to implement the delete modal here -->
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock %}

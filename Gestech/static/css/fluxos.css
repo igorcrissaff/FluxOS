@@ -1,0 +1,73 @@
+
+/*@import "variables.css";*/
+:root{
+
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+    --bs-primary: var(--primary) !important;
+    --bs-primary-rgb: 37, 99, 235;
+
+    --success:#10B981;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+
+    --background:#F8FAFC;
+
+    --sidebar:#020C2B;
+
+    --text:#334155;
+
+    --border:#E2E8F0;
+
+    --card:#FFFFFF;
+
+    --radius:14px;
+
+    --gradient: linear-gradient(135deg,#020C2B 0%, #081A4A 55%,#123A9C 100%);
+}
+
+/*@import "typography.css";*/
+body{
+
+    font-family:Inter,sans-serif;
+
+    color:var(--text);
+
+    background:var(--background);
+
+}
+
+/*@import "layout/sidebar.css";*/
+.sidebar{
+
+    background: var(--gradient);
+
+}
+
+.sidebar .nav-link{
+
+    color:rgba(255,255,255,.8);
+
+}
+
+.sidebar .nav-link:hover{
+
+    color:white;
+
+}
+
+/*@import "layout/topbar.css";*/
+.topbar{
+
+    background:white;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.bg-gradient-primary {
+    background: var(--gradient) !important;
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+

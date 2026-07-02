@@ -4,9 +4,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'dashboard' %}">
         <div class="sidebar-brand-icon">
-            <img src="{% static 'img/logo.png' %}" alt="logo gestech" style="height: 50px;">
+            <img src="{% static 'img/logo.png' %}" alt="logo FluxOS" width="40px">
         </div>
-        <div class="sidebar-brand-text mx-3">Ges<strong style="color: aqua;">tech</strong></div>
+        <div class="sidebar-brand-text mx-3">Flux<strong style="color: var(--primary);">OS</strong></div>
     </a>
 
     <!-- Divider -->
@@ -16,16 +16,9 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'dashboard' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard</span>
+        </a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Departaments
-    </div>
 
     <!-- Nav Item - Stock Collapse Menu -->
     <li class="nav-item">
@@ -44,7 +37,6 @@
     </li>
 
     <!-- Nav Item - Orders Collapse Menu -->
-    
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
             aria-expanded="true" aria-controls="collapseOrders">
@@ -63,7 +55,6 @@
     </li>
     
     <!-- Nav Item - Finances Collapse Menu -->
-    <!--
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinances"
             aria-expanded="true" aria-controls="collapseFinances">
@@ -81,7 +72,7 @@
             </div>
         </div>
     </li>
-    -->
+
 
     <!-- Nav Item - Customers -->
     <li class="nav-item">
@@ -93,23 +84,29 @@
 
 
     <!-- Nav Item - Users Collapse Menu -->
-    <!--
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
             aria-expanded="true" aria-controls="collapseUsers">
-            <i class="fas fa-fw fa-user-helmet-safety"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Users</span>
         </a>
         <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="{% url 'users_index' %}">Users</a>
-                <a class="collapse-item" href="utilities-border.html">Roles</a>
+                <a class="collapse-item" href="#">Users</a>
+                <a class="collapse-item" href="#">Roles</a>
             </div>
         </div>
     </li>
-    -->
+
+    <!-- Nav Item - Settings -->
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>Settings</span>
+        </a>
+    </li>
 
     
 

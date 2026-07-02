@@ -80,6 +80,8 @@ An Open Source Commercial Management application focused on streamlining sales o
   High-level Python web framework used to build secure and scalable backend services.
 * **Python**
   Core programming language powering the application logic.
+* **MySQL**
+  Robust relational database.
 
 ### Frontend
 
@@ -89,13 +91,6 @@ An Open Source Commercial Management application focused on streamlining sales o
   Client-side interactivity and dynamic behavior.
 * **Bootstrap**
   Responsive UI framework for consistent design and layout.
-
-### Data & Persistence
-
-* **PostgreSQL** *(recommended for production)*
-Robust relational database.
-* **SQLite** *(development)*
-Lightweight database for local development.
 
 ### Static Assets & UI Libraries
 
