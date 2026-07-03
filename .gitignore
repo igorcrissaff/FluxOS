@@ -398,4 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 # App 
+.venv/
 venv/
+.env
+db.sqlite3

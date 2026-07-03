@@ -1,7 +1,7 @@
 from django.db import models
 from django.forms import ModelForm
-from customers.models import Customer
-from stock.models import Product
+from apps.customers.models import Customer
+from apps.stock.models import Product
 
 class OrderStatus(models.TextChoices):
     PENDING = 'Pending', 'Pending'

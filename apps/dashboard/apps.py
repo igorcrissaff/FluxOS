@@ -3,5 +3,5 @@ from django.apps import AppConfig
 
 class DashBoardConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'dashboard'
+    name = 'apps.dashboard'
     verbose_name = 'Dashboard'

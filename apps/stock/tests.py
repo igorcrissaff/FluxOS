@@ -1,5 +1,5 @@
 from django.test import TestCase
-from stock.models import Category, Product, Movement
+from FluxOS.apps.stock.models import Category, Product, Movement
 
 class CategoryModelTest(TestCase):
     def setUp(self):
