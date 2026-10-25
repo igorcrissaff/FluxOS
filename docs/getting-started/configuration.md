@@ -28,7 +28,7 @@ The `.env` file is not versioned and contains the local settings.
 SECRET_KEY=your-generated-key
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
+DATABASE_URL=postgresql://user:password@127.0.0.1:5432/fluxos
 LANGUAGE_CODE=pt-br
 TIME_ZONE=America/Sao_Paulo
 ```
@@ -43,33 +43,39 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 The project reads the connection from `DATABASE_URL` using `django-environ`.
 
+### PostgreSQL
+
+Recommended database for the project.
+
+Create the database:
+
+```sql
+CREATE DATABASE fluxos
+    WITH ENCODING 'UTF8'
+    TEMPLATE template0;
+```
+
+Configure the URL:
+
+```env
+DATABASE_URL=postgresql://user:password@127.0.0.1:5432/fluxos
+```
+
+Install the `psycopg` driver:
+
+```bash
+pip install "psycopg[binary]"
+```
+
 ### SQLite
 
-Recommended for development:
+Alternative for quick development:
 
 ```env
 DATABASE_URL=sqlite:///db.sqlite3
 ```
 
 The database file is created automatically on the first migration.
-
-### MySQL
-
-Create the database:
-
-```sql
-CREATE DATABASE fluxos
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-```
-
-Configure the URL:
-
-```env
-DATABASE_URL=mysql://user:password@127.0.0.1:3306/fluxos
-```
-
-The `mysqlclient` driver is already listed in `requirements.txt`.
 
 ## Django settings
 

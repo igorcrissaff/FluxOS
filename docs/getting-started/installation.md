@@ -11,10 +11,10 @@ This guide describes how to prepare a development environment for FluxOS.
 | Python | 3.14 or later |
 | Git | Latest version |
 | pip | Included with Python |
-| MySQL | 8.0 or later (optional) |
+| PostgreSQL | 14 or later (recommended) |
 | Node.js | Only for reinstalling frontend dependencies manually |
 
-The project works with SQLite in development. MySQL is optional and can be configured via `DATABASE_URL`.
+PostgreSQL is the recommended database and can be configured via `DATABASE_URL`. The project also works with SQLite for quick development.
 
 The frontend libraries are already included in `static/`. There is no need to install Bootstrap, jQuery, DataTables, Chart.js, or Font Awesome separately, nor to run a frontend build.
 
@@ -67,7 +67,13 @@ Alternatively, with `uv`:
 uv sync
 ```
 
-The dependencies include Django 6.0.6, django-environ, django-widget-tweaks, and mysqlclient. `mysqlclient` is used with MySQL; on Windows you may need to install the MySQL Client/Connector C and the C++ build tools to complete the installation.
+The dependencies include Django 6.0.6, django-environ, and django-widget-tweaks. For PostgreSQL, also install the `psycopg` driver:
+
+```bash
+pip install "psycopg[binary]"
+```
+
+The binary distribution does not require build tools. On systems where the driver is built from source, `libpq` must be installed.
 
 ## Configure the environment variables
 
@@ -94,11 +100,11 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 Replace `SECRET_KEY` in `.env`. Then configure the database:
 
 ```env
-# SQLite (development)
-DATABASE_URL=sqlite:///db.sqlite3
+# PostgreSQL (recommended)
+DATABASE_URL=postgresql://user:password@127.0.0.1:5432/fluxos
 
-# MySQL (optional)
-# DATABASE_URL=mysql://user:password@127.0.0.1:3306/fluxos
+# SQLite (development)
+# DATABASE_URL=sqlite:///db.sqlite3
 ```
 
 ## Frontend dependencies

@@ -30,7 +30,7 @@ Windows CMD:
 python manage.py migrate
 ```
 
-With SQLite, the database is created automatically at this step.
+With PostgreSQL, create the database before migrating (see [Configuration](configuration.md)). With SQLite, the file is created automatically at this step.
 
 ## 3. Create the superuser
 

@@ -30,7 +30,7 @@ Windows CMD:
 python manage.py migrate
 ```
 
-Com SQLite, o banco é criado automaticamente nessa etapa.
+Com PostgreSQL, crie o banco antes de migrar (veja [Configuração](configuracao.md)). Com SQLite, o arquivo é criado automaticamente nessa etapa.
 
 ## 3. Criar o superusuário
 

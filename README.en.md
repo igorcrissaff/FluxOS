@@ -128,12 +128,16 @@ Items not yet implemented or in progress:
 | Django | 6.0.6 | Web framework |
 | django-environ | 0.14.0 | Environment variable reading |
 | django-widget-tweaks | 1.5.1 | Widget customization in templates |
-| mysqlclient | 2.2.8 | MySQL driver |
+| psycopg | 3.x | PostgreSQL driver |
 | asgiref | 3.11.1 | Django dependency |
 | sqlparse | 0.5.5 | Django dependency |
 | tzdata | 2026.2 | Time zone data |
 
-Versions are pinned in `requirements.txt` and `pyproject.toml`.
+Backend versions are pinned in `requirements.txt` and `pyproject.toml`. The `psycopg` driver must be installed to use PostgreSQL:
+
+```bash
+pip install "psycopg[binary]"
+```
 
 ### Frontend
 
@@ -205,7 +209,7 @@ FluxOS/
 - Python 3.14 or later
 - Git
 - `pip`
-- MySQL 8+ (optional; the project works with SQLite for development)
+- PostgreSQL 14+ (recommended; the project also works with SQLite for development)
 - Node.js only if you reinstall the frontend libraries manually
 
 > There is no need to install Bootstrap, jQuery, DataTables, Chart.js, or Font Awesome separately: the files are already versioned in the project.
@@ -261,7 +265,13 @@ Alternatively, with `uv`:
 uv sync
 ```
 
-`mysqlclient` is required because it is listed in the dependencies and is used when `DATABASE_URL` points to MySQL. On Windows, if the installation fails, install the MySQL Client/Connector C and the C++ build tools recommended for your Python version. For quick development with SQLite, the database does not need to be installed, but the Python package still needs to be installed.
+`psycopg` is the driver used when `DATABASE_URL` points to PostgreSQL. Install the binary distribution, which does not require build tools:
+
+```bash
+pip install "psycopg[binary]"
+```
+
+On systems where the driver is built from source, `libpq` must be installed. For quick development with SQLite, no database server is required, but the PostgreSQL driver must still be installed to use PostgreSQL.
 
 ### 4. Configure the environment variables
 
@@ -287,16 +297,16 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 Edit `.env` and replace the value of `SECRET_KEY`.
 
+For PostgreSQL:
+
+```env
+DATABASE_URL=postgresql://user:password@127.0.0.1:5432/fluxos
+```
+
 For quick development with SQLite:
 
 ```env
 DATABASE_URL=sqlite:///db.sqlite3
-```
-
-For MySQL:
-
-```env
-DATABASE_URL=mysql://user:password@127.0.0.1:3306/fluxos
 ```
 
 Optional settings:
@@ -314,12 +324,12 @@ The `.env` file is not versioned.
 
 With SQLite, the database is created automatically on the first migration.
 
-With MySQL, create the database before migrating:
+With PostgreSQL, create the database before migrating:
 
 ```sql
 CREATE DATABASE fluxos
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
+    WITH ENCODING 'UTF8'
+    TEMPLATE template0;
 ```
 
 ### 6. Apply migrations
