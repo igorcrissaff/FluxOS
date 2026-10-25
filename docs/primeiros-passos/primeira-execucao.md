@@ -1,137 +1,99 @@
 # Primeira execução
 
-Após instalar e configurar o projeto, execute os passos abaixo.
+> Idioma: [Português](primeira-execucao.md) | [English](../getting-started/first-run.md)
 
----
+Depois de instalar as dependências e configurar o `.env`, execute os passos abaixo.
 
-## 1. Ative o ambiente virtual
+## 1. Ativar o ambiente virtual
 
-Linux
+Linux/macOS:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Windows
+Windows PowerShell:
 
 ```powershell
-.venv\Scripts\activate
+.venv\Scripts\Activate.ps1
 ```
 
----
+Windows CMD:
 
-## 2. Execute as migrações
+```bat
+.venv\Scripts\activate.bat
+```
+
+## 2. Aplicar as migrações
 
 ```bash
 python manage.py migrate
 ```
 
----
+Com SQLite, o banco é criado automaticamente nessa etapa.
 
-## 3. Crie um usuário administrador
+## 3. Criar o superusuário
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Informe:
+Informe nome de usuário, e-mail e senha. Esse usuário poderá acessar o painel administrativo e gerenciar a equipe.
 
-- usuário
-
-- e-mail
-
-- senha
-
----
-
-## 4. Execute o servidor
+## 4. Executar o servidor
 
 ```bash
 python manage.py runserver
 ```
 
----
+## 5. Acessar a aplicação
 
-## 5. Acesse a aplicação
+Aplicação:
 
-Aplicação
-
-```
-http://127.0.0.1:8000
+```text
+http://127.0.0.1:8000/
 ```
 
-Painel administrativo
+Painel administrativo:
 
+```text
+http://127.0.0.1:8000/admin/
 ```
-http://127.0.0.1:8000/admin
+
+## 6. Verificar o funcionamento
+
+```bash
+python manage.py check
+python manage.py test
 ```
 
----
+Confirme também:
 
-## Verificações
-
-Antes de iniciar o desenvolvimento confirme:
-
-- Banco conectado
-
-- Login funcionando
-
-- Arquivos estáticos carregando
-
-- Painel administrativo acessível
-
-- Sem erros no terminal
-
----
+- login funcionando;
+- arquivos estáticos carregando;
+- dashboard acessível;
+- cadastro de produtos, clientes e pedidos funcionando;
+- painel administrativo acessível.
 
 ## Comandos úteis
 
-Criar migração
-
 ```bash
+# Criar migrações
 python manage.py makemigrations
-```
 
-Aplicar migrações
-
-```bash
+# Aplicar migrações
 python manage.py migrate
-```
 
-Abrir shell
-
-```bash
+# Abrir o shell
 python manage.py shell
+
+# Executar todos os testes
+python manage.py test
+
+# Testar um app específico
+python manage.py test apps.stock
 ```
-
-Executar testes
-
-```bash
-pytest
-```
-
-Executar lint
-
-```bash
-ruff check .
-```
-
-Formatar código
-
-```bash
-black .
-```
-
----
 
 ## Próximos passos
 
-Agora você pode começar a desenvolver novos módulos do FluxOS.
-
-Recomenda-se ler a documentação:
-
-- Architecture
-
-- Style Guide
-
-- Contributing
+A documentação principal do projeto, incluindo objetivos, funcionalidades, dependências e instalação, está no [README](../../README.md).

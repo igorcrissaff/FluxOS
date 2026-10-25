@@ -1,0 +1,24 @@
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+
+<div class="dropdown no-arrow language-selector">
+    <button class="btn btn-link nav-link dropdown-toggle" type="button" id="languageDropdown"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        title="{% translate 'Change language' %}" aria-label="{% translate 'Change language' %}">
+        <i class="fas fa-globe fa-fw"></i>
+        <span class="d-none d-lg-inline text-gray-600 small">{{ CURRENT_LANGUAGE|upper }}</span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="languageDropdown">
+        {% for code, name in AVAILABLE_LANGUAGES %}
+        <form action="{% url 'set_language' %}" method="post" class="m-0">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+            <button type="submit" name="language" value="{{ code }}"
+                class="dropdown-item{% if code == CURRENT_LANGUAGE %} active{% endif %}">
+                {{ name }}
+            </button>
+        </form>
+        {% endfor %}
+    </div>
+</div>

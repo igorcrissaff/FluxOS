@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% load widget_tweaks %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Gestech - Estoque{% endblock %}
+{% block title %}Gestech - {% translate "Categories" %}{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">categories</h1>
+    <h1 class="h3 mb-2 text-gray-800">{% translate "Categories" %}</h1>
     <p class="mb-4">
-        Manage your categories for your registered products <br>
+        {% translate "Manage your categories for your registered products" %} <br>
     </p>
     
     <div class="row">
@@ -18,7 +18,7 @@
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Category Information</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">{% translate "Category Information" %}</h6>
                 </div>
                 <div class="card-body">
                     <form class="form" method="post">
@@ -27,13 +27,13 @@
                         {{ form.non_field_errors }}
                         
                         <div class="form-group">
-                            <label for="{{ form.name.id_for_label }}">Name:</label>
+                            <label for="{{ form.name.id_for_label }}">{% translate "Name:" %}</label>
                             {{ form.name | add_class:"form-control" }}
                             {{ form.name.errors }}
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button type="submit" class="btn btn-primary">{% translate "Save" %}</button>
                         </div>
                 
                     </form>
@@ -46,7 +46,7 @@
             <div class="card shadow mb-4">
             <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Categorias</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{% translate "Categories" %}</h6>
             </div>
 
             <!-- Card Body -->
@@ -55,36 +55,39 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>Ações</th>
+                                <th>{% translate "Name" %}</th>
+                                <th>{% translate "Actions" %}</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Nome</th>
-                                <th>Ações</th>
+                                <th>{% translate "Name" %}</th>
+                                <th>{% translate "Actions" %}</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             {% for category in categories %}
                             <tr>
                                 <td>
-                                    <a href="#">
+                                    <a href="{% url 'edit_category' category.id %}">
                                         {{ category.name }}
-                                    </a> 
+                                    </a>
                                 </td>
                                 <td>
                                      <a href="{% url 'edit_category' category.id %}" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <a href="{% url 'delete_category' category.id %}" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <form method="post" action="{% url 'delete_category' category.id %}" class="d-inline" onsubmit="return confirm('{% translate "Delete this category?" %}');">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             {% empty %}
                             <tr>
-                                <td colspan="6">No products available.</td>
+                                <td colspan="2">{% translate "No categories available." %}</td>
                             </tr>
                             {% endfor %}
                             

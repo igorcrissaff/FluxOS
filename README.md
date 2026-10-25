@@ -1,208 +1,411 @@
 # FluxOS
 
-Um sistema **Open Source** de Gestão Comercial, desenvolvido para otimizar operações de vendas, relacionamento com clientes e controle de estoque, proporcionando visibilidade completa sobre todo o ciclo comercial.
+> Idioma: [Português](README.md) | [English](README.en.md)
 
-## 💎 Objetivos Principais
+O **FluxOS** é um sistema open source de gestão comercial criado para centralizar clientes, pedidos, produtos e estoque em uma única aplicação. O projeto oferece uma base modular em Django, com autenticação, controle de acesso por perfil, painel administrativo, interface responsiva e suporte a português e inglês.
 
-- Melhorar a eficiência e a visibilidade das vendas
-- Aprimorar a gestão do relacionamento com clientes
-- Reduzir erros operacionais por meio da automação
-- Apoiar a tomada de decisões comerciais baseada em dados
+O sistema está em desenvolvimento ativo e já possui os fluxos principais de operação comercial implementados.
 
-## ✨ Funcionalidades Principais
+## Visão Geral
 
-### 1. Gestão de Clientes
+O FluxOS foi pensado para pequenos e médios negócios que precisam acompanhar o ciclo comercial sem depender de planilhas separadas. A aplicação reúne:
 
-- Cadastro e gerenciamento de clientes
-- Informações de contato e histórico de interações
-- Segmentação e classificação de clientes
+- cadastro e histórico de clientes;
+- pedidos com múltiplos itens e controle de status;
+- catálogo de produtos, categorias e disponibilidade;
+- movimentações de estoque com validação de saldo;
+- indicadores de faturamento, pedidos e estoque no dashboard;
+- gestão de usuários e perfil com separação entre usuários comuns e equipe administrativa.
 
-### 2. Gestão de Vendas
+## Objetivos
 
-- Criação de orçamentos e pedidos de venda
-- Definição de preços, descontos e promoções
-- Acompanhamento e histórico de vendas
+### Objetivos de negócio
 
-### 3. Processamento de Pedidos
+- Centralizar a operação comercial em um único sistema.
+- Melhorar a visibilidade sobre vendas, clientes e estoque.
+- Reduzir erros manuais em pedidos e movimentações de estoque.
+- Apoiar decisões com indicadores atualizados de receita, pedidos e produtos em falta.
+- Manter um histórico confiável de clientes, pedidos e alterações de estoque.
 
-- Validação de pedidos e acompanhamento de status
-- Faturamento e emissão de cobranças
-- Gerenciamento de devoluções e cancelamentos
+### Objetivos técnicos
 
-### 4. Gestão de Estoque
+- Oferecer uma arquitetura modular, com cada domínio em um app Django.
+- Aplicar autenticação, autorização e validações no backend.
+- Manter testes automatizados para os fluxos críticos.
+- Ser simples de instalar e executar em ambiente de desenvolvimento.
+- Permitir evolução gradual para relatórios, integrações e novos módulos.
 
-- Controle de estoque em tempo real
-- Catálogo e categorização de produtos
-- Movimentações de estoque (entrada e saída)
+## Funcionalidades Implementadas
 
-### 5. Fornecedores e Compras
+### Dashboard
 
-- Cadastro e gerenciamento de fornecedores *(# Em desenvolvimento)*
-- Pedidos de compra e acompanhamento de suprimentos *(# Em desenvolvimento)*
-- Controle de custos e reposição de estoque *(# Em desenvolvimento)*
+- Receita mensal e anual considerando pedidos concluídos e enviados.
+- Contagem de pedidos pendentes.
+- Lista de produtos com estoque baixo.
+- Últimos pedidos cadastrados.
+- Ranking dos clientes com maior valor gasto.
+- Alertas globais de estoque baixo e pedidos pendentes.
 
-### 6. Visão Financeira
+### Clientes
 
-- Controle de contas a receber *(# Em desenvolvimento)*
-- Conciliação e acompanhamento de pagamentos *(# Em desenvolvimento)*
-- Visão básica de faturamento e fluxo de caixa *(# Em desenvolvimento)*
+- Cadastro, edição, listagem e exclusão de clientes.
+- Endereço, gênero, estado civil e data de nascimento.
+- Página de detalhes com histórico de pedidos.
+- Total de pedidos e valor total gasto por cliente.
+- Exclusão protegida por requisição POST.
 
-### 7. Relatórios e Dashboards
+### Pedidos
 
-- Indicadores de desempenho de vendas *(# Em desenvolvimento)*
-- Análises de estoque e produtos *(# Em desenvolvimento)*
-- Análise do comportamento dos clientes *(# Em desenvolvimento)*
+- Cadastro, edição, listagem, detalhes e exclusão de pedidos.
+- Itens de pedido com produto e quantidade.
+- Cálculo automático de subtotal e total.
+- Status: pendente, concluído, cancelado, enviado e devolvido.
+- Filtro de pedidos por status.
+- Atualização automática das estatísticas do cliente.
+- Pré-seleção do cliente ao criar um pedido a partir da página do cliente.
 
-### 8. Usuários e Controle de Acesso
+### Estoque
 
-- Permissões baseadas em funções (roles)
-- Autenticação segura
-- Registro de atividades *(# Em desenvolvimento)*
+- Cadastro, edição e exclusão de produtos.
+- Cadastro, edição e exclusão de categorias.
+- Controle de disponibilidade e limite de estoque baixo.
+- Filtro de produtos com estoque baixo.
+- Movimentações de entrada e saída de estoque.
+- Validação de quantidade e de saldo disponível.
+- Registro do usuário responsável por cada movimentação.
+- Bloqueio de edição de movimentações já registradas.
 
-### 9. Notificações e Alertas
+### Usuários e Segurança
 
-- Alertas de baixo estoque *(# Em desenvolvimento)*
-- Atualizações do status dos pedidos *(# Em desenvolvimento)*
-- Lembretes de pagamento *(# Em desenvolvimento)*
+- Login e logout.
+- Gestão de usuários restrita à equipe administrativa.
+- Criação e edição de usuários com validação de senha.
+- Proteção contra autoativação, autodesativação e autoexclusão indevidas.
+- Perfil do usuário limitado a nome, sobrenome, e-mail e nome de usuário.
+- Rotas protegidas por autenticação.
+- Exclusões e alterações sensíveis via POST.
 
-### 10. Integrações e Escalabilidade
+### Interface e Internacionalização
 
-- Suporte a API para sistemas externos *(# Em desenvolvimento)*
-- Arquitetura modular para futuras expansões
-- Integração com sistemas contábeis *(# Em desenvolvimento)*
-- Integração com WooCommerce *(# Em desenvolvimento)*
+- Interface responsiva com Bootstrap e SB Admin 2.
+- Tabelas com DataTables.
+- Gráficos e indicadores com Chart.js.
+- Ícones com Font Awesome.
+- Mensagens de sucesso e erro centralizadas.
+- Idiomas disponíveis: inglês (`en-us`) e português do Brasil (`pt-br`).
+- Traduções compiladas em `locale/pt_BR/LC_MESSAGES/`.
 
----
+### Testes
 
-# 🛠️ Tecnologias Utilizadas
+A suíte cobre modelos, formulários, views, permissões, redirecionamentos, exclusões via POST, movimentações de estoque, estatísticas de clientes, dashboard, alertas, autenticação e troca de idioma.
 
-## Backend
+## Roadmap
 
-### **Django**
-Framework web de alto nível para Python, utilizado para desenvolver serviços de backend seguros, robustos e escaláveis.
+Itens ainda não implementados ou em evolução:
 
-### **Python**
-Linguagem principal responsável por toda a lógica de negócio da aplicação.
+- fornecedores e pedidos de compra;
+- contas a receber e conciliação financeira;
+- relatórios avançados e exportação de dados;
+- notificações por e-mail e lembretes;
+- API para integrações externas;
+- integração com WooCommerce;
+- configuração de produção com Docker, Gunicorn e Nginx.
 
-### **MySQL**
-Banco de dados relacional robusto e confiável.
+### Limitações atuais
 
-## Frontend
+- A criação de um pedido não baixa o estoque automaticamente; a baixa deve ser registrada como movimentação de saída.
+- O dashboard considera receita somente para pedidos com status **Completed** ou **Shipped**.
+- Os totais de clientes são mantidos de forma denormalizada e atualizados quando pedidos são criados, editados ou excluídos.
+- O ambiente de produção ainda não está documentado neste repositório.
 
-### **HTML5 / CSS3**
-Estrutura e estilização da interface do usuário.
+## Tecnologias e Dependências
 
-### **JavaScript**
-Responsável pela interatividade e comportamento dinâmico da aplicação.
+### Backend
 
-### **Bootstrap**
-Framework CSS para construção de interfaces responsivas e consistentes.
+| Pacote | Versão | Finalidade |
+| --- | --- | --- |
+| Python | 3.14+ | Linguagem e runtime |
+| Django | 6.0.6 | Framework web |
+| django-environ | 0.14.0 | Leitura de variáveis de ambiente |
+| django-widget-tweaks | 1.5.1 | Customização de widgets nos templates |
+| mysqlclient | 2.2.8 | Driver MySQL |
+| asgiref | 3.11.1 | Dependência do Django |
+| sqlparse | 0.5.5 | Dependência do Django |
+| tzdata | 2026.2 | Dados de fuso horário |
 
-## Bibliotecas de Interface e Recursos Estáticos
+As versões estão fixadas em `requirements.txt` e `pyproject.toml`.
 
-### **Chart.js**
-Visualização de dados em dashboards e relatórios.
+### Frontend
 
-### **DataTables**
-Recursos avançados para tabelas, incluindo ordenação, filtros e paginação.
+As bibliotecas de interface já estão incluídas no repositório, dentro de `static/`. Não é necessário executar `npm install` nem criar um build de frontend para rodar o projeto.
 
-### **Font Awesome**
-Biblioteca de ícones para enriquecimento da interface.
+| Biblioteca | Versão | Local |
+| --- | --- | --- |
+| Bootstrap | 4.6.0 | `static/vendor/bootstrap/` |
+| SB Admin 2 | 4.1.3 | `static/css/` e `static/js/` |
+| jQuery | 3.6.0 | `static/vendor/jquery/` |
+| jQuery Easing | 1.4.x | `static/vendor/jquery-easing/` |
+| DataTables | 1.10.24 | `static/vendor/datatables/` |
+| DataTables Bootstrap 4 | 1.10.24 | `static/vendor/datatables/` |
+| Font Awesome Free | 5.15.3 | `static/vendor/fontawesome-free/` |
+| Chart.js | 2.x | `static/vendor/chart.js/` |
+| Google Fonts (Inter) | CDN | Carregado em `templates/head.html` |
 
-### **jQuery**
-Manipulação do DOM e suporte a componentes legados da interface.
+O Bootstrap é a base do layout responsivo. O template SB Admin 2 fornece a estrutura visual do painel, e o DataTables adiciona ordenação, busca e paginação às tabelas.
 
-## Implantação e Infraestrutura
+#### Reinstalação opcional das dependências frontend
 
-### **Docker**
-Plataforma de conteinerização utilizada para garantir ambientes consistentes entre desenvolvimento e produção.
+O projeto não exige Node.js. Caso seja necessário atualizar ou restaurar as bibliotecas, baixe as distribuições oficiais e mantenha a estrutura de pastas usada em `static/vendor/`:
 
-### **Gunicorn**
-Servidor HTTP WSGI utilizado para executar a aplicação Django em ambiente de produção.
+- Bootstrap 4: https://getbootstrap.com/docs/4.6/getting-started/download/
+- jQuery: https://jquery.com/download/
+- DataTables: https://datatables.net/download/
+- Font Awesome 5: https://fontawesome.com/v5/download
+- Chart.js: https://www.chartjs.org/docs/
+- SB Admin 2: https://startbootstrap.com/theme/sb-admin-2
 
-### **Nginx**
-Servidor web e proxy reverso responsável por atender requisições, servir arquivos estáticos e realizar balanceamento de carga.
+Também é possível usar npm em um diretório temporário:
 
----
+```bash
+npm install bootstrap@4.6.0 jquery@3.6.0 jquery.easing@1.4.1 datatables.net@1.10.24 datatables.net-bs4@1.10.24 chart.js@2.9.4 @fortawesome/fontawesome-free@5.15.3
+```
 
-# 📂 Estrutura do Projeto
+Depois, copie os arquivos necessários de `node_modules/` para as pastas correspondentes em `static/vendor/`. Não há etapa de compilação obrigatória.
 
-Este projeto segue uma arquitetura modular do Django, onde cada domínio da aplicação é isolado em seu próprio aplicativo (*app*), facilitando a manutenção, evolução e escalabilidade.
+## Estrutura do Projeto
 
 ```text
 FluxOS/
-├── core/                # Configurações do projeto (settings, urls, wsgi/asgi)
-├── customers/           # Domínio de clientes
-├── dashboard/           # Interface administrativa (Dashboard)
-├── members/             # Usuários e autenticação
-├── orders/              # Gerenciamento de pedidos
-├── stock/               # Controle de estoque
-├── static/              # Arquivos estáticos globais
-│   ├── css/             # CSS personalizado
-│   ├── js/              # JavaScript personalizado
-│   ├── img/             # Imagens e recursos visuais
-│   └── vendor/          # Bibliotecas do frontend
-└── templates/           # Templates compartilhados
-    └── registration/
+├── apps/
+│   ├── customers/          # Clientes
+│   ├── dashboard/          # Dashboard e perfil
+│   ├── members/            # Usuários e controle de acesso
+│   ├── orders/             # Pedidos, itens e estatísticas
+│   └── stock/              # Produtos, categorias e movimentações
+├── core/                   # Configurações, URLs e context processors
+├── docs/                   # Documentação complementar
+├── locale/                 # Traduções (pt-BR e en-US)
+├── static/
+│   ├── css/                # Estilos globais e SB Admin 2
+│   ├── img/                # Imagens
+│   ├── js/                 # Scripts globais
+│   └── vendor/             # Bootstrap, jQuery, DataTables, Chart.js etc.
+├── templates/              # Templates globais e de autenticação
+├── manage.py
+├── requirements.txt
+├── pyproject.toml
+├── uv.lock
+└── .env.example
 ```
 
-## Camada Principal
+## Instalação
 
-### **core/**
+### Pré-requisitos
 
-Contém toda a configuração global da aplicação, incluindo:
+- Python 3.14 ou superior
+- Git
+- `pip`
+- MySQL 8+ (opcional; o projeto funciona com SQLite para desenvolvimento)
+- Node.js apenas se for reinstalar as bibliotecas de frontend manualmente
 
-- Configurações do projeto (`settings.py`)
-- Roteamento de URLs
-- Pontos de entrada WSGI e ASGI
+> Não é necessário instalar Bootstrap, jQuery, DataTables, Chart.js ou Font Awesome separadamente: os arquivos já estão versionados no projeto.
 
----
+### 1. Clonar o repositório
 
-## Aplicações de Domínio
+```bash
+git clone https://github.com/<usuario>/FluxOS.git
+cd FluxOS
+```
 
-Cada aplicativo encapsula um contexto específico da regra de negócio.
+### 2. Criar e ativar o ambiente virtual
 
-- **customers/** → Gestão de clientes e suas operações
-- **members/** → Autenticação e gerenciamento de usuários
-- **orders/** → Ciclo de vida e processamento de pedidos
-- **stock/** → Controle de estoque e inventário
+Linux/macOS:
 
----
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
 
-## Camada de Interface
+Windows PowerShell:
 
-### **dashboard/**
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
 
-Responsável pela interface administrativa da aplicação, dashboards e recursos relacionados ao frontend.
+Windows CMD:
 
----
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+```
 
-## Recursos Compartilhados
+Se o PowerShell bloquear a ativação, execute apenas para a sessão atual:
 
-### **templates/**
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
 
-Templates globais reutilizados por diversos aplicativos, como páginas de autenticação.
+### 3. Instalar as dependências Python
 
-### **static/**
+Atualize o `pip` e instale os pacotes:
 
-Arquivos estáticos compartilhados por toda a aplicação:
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-- CSS
-- JavaScript
-- Imagens
-- Bibliotecas de terceiros
+Alternativamente, com `uv`:
 
----
+```bash
+uv sync
+```
 
-# 📐 Princípios de Design
+O `mysqlclient` é necessário porque está listado nas dependências e é usado quando `DATABASE_URL` aponta para MySQL. Em Windows, caso a instalação falhe, instale o MySQL Client/Connector C e as ferramentas de compilação C++ recomendadas para a versão do Python. Para desenvolvimento rápido com SQLite, o banco não precisa estar instalado, mas o pacote Python ainda precisa ser instalado.
 
-- **Separação de Responsabilidades (Separation of Concerns):** cada aplicativo representa um contexto de negócio bem definido.
-- **Reutilização:** templates e arquivos estáticos compartilhados são centralizados.
-- **Escalabilidade:** a arquitetura modular permite que novos domínios sejam adicionados de forma independente.
-- **Manutenibilidade:** limites claros entre os componentes reduzem o acoplamento e facilitam a evolução do sistema.
+### 4. Configurar as variáveis de ambiente
 
----
+Copie o arquivo de exemplo:
 
-# ⚙️ Instalação
+Linux/macOS:
 
-**Em breve...**
+```bash
+cp .env.example .env
+```
+
+Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Gere uma nova `SECRET_KEY`:
+
+```bash
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+Edite `.env` e substitua o valor de `SECRET_KEY`.
+
+Para desenvolvimento rápido com SQLite:
+
+```env
+DATABASE_URL=sqlite:///db.sqlite3
+```
+
+Para MySQL:
+
+```env
+DATABASE_URL=mysql://usuario:senha@127.0.0.1:3306/fluxos
+```
+
+Configurações opcionais:
+
+```env
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+LANGUAGE_CODE=pt-br
+TIME_ZONE=America/Sao_Paulo
+```
+
+O arquivo `.env` não é versionado.
+
+### 5. Criar o banco de dados
+
+Com SQLite, o banco é criado automaticamente na primeira migração.
+
+Com MySQL, crie o banco antes de migrar:
+
+```sql
+CREATE DATABASE fluxos
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+```
+
+### 6. Aplicar migrações
+
+```bash
+python manage.py migrate
+```
+
+### 7. Criar um superusuário
+
+```bash
+python manage.py createsuperuser
+```
+
+Informe nome de usuário, e-mail e senha.
+
+### 8. Executar o servidor
+
+```bash
+python manage.py runserver
+```
+
+Acesse:
+
+- Aplicação: http://127.0.0.1:8000/
+- Painel administrativo: http://127.0.0.1:8000/admin/
+
+### 9. Verificar a instalação
+
+```bash
+python manage.py check
+python manage.py test
+```
+
+A suíte atual cobre os apps de clientes, pedidos, estoque, usuários, dashboard e o módulo core.
+
+## Comandos Úteis
+
+```bash
+# Criar novas migrações
+python manage.py makemigrations
+
+# Aplicar migrações
+python manage.py migrate
+
+# Abrir o shell do Django
+python manage.py shell
+
+# Executar todos os testes
+python manage.py test
+
+# Executar testes de um app específico
+python manage.py test apps.stock
+
+# Verificar o projeto
+python manage.py check
+```
+
+## Internacionalização
+
+O projeto inclui inglês e português do Brasil. O idioma pode ser alterado pelo seletor no topo da interface.
+
+Arquivos de tradução:
+
+```text
+locale/
+└── pt_BR/
+    └── LC_MESSAGES/
+        ├── django.po
+        └── django.mo
+```
+
+Os arquivos `.mo` já estão compilados. Caso altere traduções e tenha o GNU gettext instalado:
+
+```bash
+python manage.py compilemessages
+```
+
+## Documentação Complementar
+
+- [Índice da documentação](docs/README.md)
+- [Instalação](docs/primeiros-passos/instalacao.md)
+- [Configuração](docs/primeiros-passos/configuracao.md)
+- [Primeira execução](docs/primeiros-passos/primeira-execucao.md)
+- [Documentação em inglês](docs/getting-started/installation.md)
+
+## Licença
+
+Este projeto está licenciado sob a GNU General Public License v3.0. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.

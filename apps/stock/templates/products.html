@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Gestech - Estoque{% endblock %}
+{% block title %}Gestech - {% translate "Stock" %}{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
@@ -10,15 +10,33 @@
      <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
         <div>
-            <h1 class="h3 mb-2 text-gray-800">Stock</h1>
+            <h1 class="h3 mb-2 text-gray-800">{% translate "Stock" %}</h1>
             <p class="mb-4">
-                Manage your stock and registered products <br>
+                {% translate "Manage your stock and registered products" %} <br>
+                {% if low_stock_products %}
+                <a href="{% url 'stock_index' %}?low_stock=1" class="text-warning font-weight-bold">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    {% translate "Low stock products:" %} {{ low_stock_products.count }}
+                </a>
+                {% endif %}
             </p>
         </div>
-        <a href="{% url 'create_product' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Register Product </a>
+        <div>
+            <a href="{% url 'movements' %}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                <i class="fas fa-exchange-alt fa-sm text-white-50"></i> {% translate "Stock Movements" %}
+            </a>
+            <a href="{% url 'create_product' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-plus fa-sm text-white-50"></i> {% translate "Register Product" %} </a>
+        </div>
 
     </div>
+
+    {% if low_stock_filter %}
+    <div class="alert alert-warning">
+        {% translate "Showing products at or below their low stock threshold." %}
+        <a href="{% url 'stock_index' %}" class="alert-link">{% translate "Show all products" %}</a>
+    </div>
+    {% endif %}
     
 
     <!-- Summary Cards-->
@@ -31,8 +49,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Stock Value</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">${{ stock_value }}</div>
+                                {% translate "Stock Value" %}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">R${{ stock_value }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -49,7 +67,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total Stock Quantity</div>
+                                {% translate "Total Stock Quantity" %}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total_stock }}</div>
                         </div>
                         <div class="col-auto">
@@ -67,9 +85,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Active Products
+                                {% translate "Active Products" %}
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ products.count }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ active_products.count }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -86,7 +104,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Products Out of Stock</div>
+                                {% translate "Products Out of Stock" %}</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ products_out_of_stock.count }}</div>
                         </div>
                         <div class="col-auto">
@@ -102,21 +120,10 @@
     <div class="card shadow mb-4">
         <!-- Card Header -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
-            <div class="dropdown no-arrow">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Actions:</div>
-                    <a class="dropdown-item" href="#">Export</a>
-                    <a class="dropdown-item" href="#">Import</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'create_product' %}">Register product</a>
-                </div>
-            </div>
+            <h6 class="m-0 font-weight-bold text-primary">{% translate "Products" %}</h6>
+            <a href="{% url 'create_product' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-plus fa-sm text-white-50"></i> {% translate "Register product" %}
+            </a>
         </div>
 
         <!-- Card Body -->
@@ -126,23 +133,25 @@
                     <thead>
                         <tr>
                             <th>SKU</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Category</th>
+                            <th>{% translate "Name" %}</th>
+                            <th>{% translate "Price" %}</th>
+                            <th>{% translate "Quantity" %}</th>
+                            <th>{% translate "Category" %}</th>
+                            <th>{% translate "Available" %}</th>
                             
-                            <th>Actions</th>
+                            <th>{% translate "Actions" %}</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>SKU</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Category</th>
+                            <th>{% translate "Name" %}</th>
+                            <th>{% translate "Price" %}</th>
+                            <th>{% translate "Quantity" %}</th>
+                            <th>{% translate "Category" %}</th>
+                            <th>{% translate "Available" %}</th>
                             
-                            <th>Actions</th>
+                            <th>{% translate "Actions" %}</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -155,22 +164,39 @@
                                 </a> 
                             </td>
                             <td>R${{ product.price }}</td>
-                            <td>{{ product.quantity }}</td>
-                            <td>{{ product.category }}</td>
+                            <td>
+                                {{ product.quantity }}
+                                {% if product.is_low_stock %}
+                                <span class="badge badge-warning">{% translate "Low" %}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ product.category|default:"-" }}</td>
+                            <td>
+                                {% if product.available %}
+                                <span class="badge badge-success">{% translate "Yes" %}</span>
+                                {% else %}
+                                <span class="badge badge-secondary">{% translate "No" %}</span>
+                                {% endif %}
+                            </td>
                         
                             <td>
+                                <a href="{% url 'create_movement' %}?product={{ product.id }}" class="btn btn-info btn-circle btn-sm" title="{% translate 'Add stock movement' %}">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </a>
                                 <a href="{% url 'edit_product' product.id %}" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                </button>
+                                <form method="post" action="{% url 'delete_product' product.id %}" class="d-inline" onsubmit="return confirm('{% translate "Delete this product?" %}');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="6">No products available.</td>
+                            <td colspan="7">{% translate "No products available." %}</td>
                         </tr>
                         {% endfor %}
                         
@@ -181,10 +207,6 @@
     </div>
 
 </div>
-
-<!-- Product Delete Modal -->
-<!-- Need to implement the delete modal here -->
-
 {% endblock %}
 
 {% block extra_scripts %}

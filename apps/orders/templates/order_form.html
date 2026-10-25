@@ -1,66 +1,120 @@
 {% extends "base.html" %}
+{% load widget_tweaks static i18n %}
 
-{% load widget_tweaks %}
-{% load static %}
-
-{% block title %}Gestech{% endblock %}
+{% block title %}Gestech - {% if order %}{% translate "Edit Order" %}{% else %}{% translate "Create Order" %}{% endif %}{% endblock %}
 
 {% block content %}
-
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Order Information</h6>
+        <h6 class="m-0 font-weight-bold text-primary">
+            {% if order %}{% translate "Edit Order" %}{% else %}{% translate "Order Information" %}{% endif %}
+        </h6>
     </div>
     <div class="card-body">
         <form class="form" method="post">
             {% csrf_token %}
-            
+
             {{ form.non_field_errors }}
-            
-            <div class="form-group">
-                <label for="{{ form.name.id_for_label }}">Name:</label>
-                {{ form.name | add_class:"form-control" }}
-                {{ form.name.errors }}
-            </div>
-
 
             <div class="row">
                 <div class="col form-group">
-                    
-                    <label for="{{ form.price.id_for_label }}">Price:</label>
-                    {{ form.price | add_class:"form-control" }}
-                    {{ form.price.errors }}
+                    <label for="{{ form.order_number.id_for_label }}">{% translate "Order Number:" %}</label>
+                    {{ form.order_number|add_class:"form-control" }}
+                    {{ form.order_number.errors }}
                 </div>
 
                 <div class="col form-group">
-                    <label for="{{ form.category.id_for_label }}">Category:</label>
-                    {{ form.category | add_class:"form-control" }}
-                    {{ form.category.errors }}
+                    <label for="{{ form.customer.id_for_label }}">{% translate "Customer:" %}</label>
+                    {{ form.customer|add_class:"form-control" }}
+                    {{ form.customer.errors }}
+                </div>
+
+                <div class="col form-group">
+                    <label for="{{ form.status.id_for_label }}">{% translate "Status:" %}</label>
+                    {{ form.status|add_class:"form-control" }}
+                    {{ form.status.errors }}
                 </div>
             </div>
-            
 
-            <div class="row">
-                <div class="col form-group">
-                    <label for="{{ form.sku.id_for_label }}">SKU:</label>
-                    {{ form.sku | add_class:"form-control" }}
-                    {{ form.sku.errors }}
-                </div>
+            <h6 class="m-0 font-weight-bold text-primary py-3">{% translate "Order Items" %}</h6>
 
-                <div class="col form-group">
-                    <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
-                    {{ form.quantity | add_class:"form-control" }}
-                    {{ form.quantity.errors }}
-                </div>
+            {{ formset.management_form }}
+            {{ formset.non_form_errors }}
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>{% translate "Product" %}</th>
+                            <th>{% translate "Quantity" %}</th>
+                            <th>{% translate "Delete" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-items-body">
+                        {% for item_form in formset %}
+                        <tr>
+                            <td>
+                                {{ item_form.id }}
+                                {{ item_form.product|add_class:"form-control" }}
+                                {{ item_form.product.errors }}
+                                {{ item_form.non_field_errors }}
+                            </td>
+                            <td>
+                                {{ item_form.quantity|add_class:"form-control" }}
+                                {{ item_form.quantity.errors }}
+                            </td>
+                            <td class="text-center">
+                                {% if item_form.instance.pk %}
+                                {{ item_form.DELETE }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            
+
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{% url 'stock_index' %}" class="btn btn-secondary">Cancel</a>
+                <button type="button" class="btn btn-outline-primary btn-sm" id="add-order-item">
+                    <i class="fas fa-plus fa-sm"></i> {% translate "Add item" %}
+                </button>
             </div>
-            
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">{% translate "Save" %}</button>
+                <a href="{% if order %}{% url 'view_order' order.id %}{% else %}{% url 'orders_index' %}{% endif %}" class="btn btn-secondary">{% translate "Cancel" %}</a>
+            </div>
         </form>
     </div>
 </div>
 
+<template id="empty-order-item">
+    <tr>
+        <td>
+            {{ formset.empty_form.id }}
+            {{ formset.empty_form.product|add_class:"form-control" }}
+        </td>
+        <td>
+            {{ formset.empty_form.quantity|add_class:"form-control" }}
+        </td>
+        <td></td>
+    </tr>
+</template>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function () {
+    const addButton = document.getElementById('add-order-item');
+    const totalForms = document.getElementById('id_{{ formset.prefix }}-TOTAL_FORMS');
+    const body = document.getElementById('order-items-body');
+    const template = document.getElementById('empty-order-item');
+
+    addButton.addEventListener('click', function () {
+        const index = parseInt(totalForms.value, 10);
+        body.insertAdjacentHTML('beforeend', template.innerHTML.replace(/__prefix__/g, index));
+        totalForms.value = index + 1;
+    });
+})();
+</script>
 {% endblock %}

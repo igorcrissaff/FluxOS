@@ -1,0 +1,820 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FluxOS 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-25 00:00+0000\n"
+"PO-Revision-Date: 2026-10-25 00:00+0000\n"
+"Last-Translator: FluxOS\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "%(quantity)s x %(product)s for Order %(order)s"
+msgstr "%(quantity)s x %(product)s do Pedido %(order)s"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Actions:"
+msgstr "Ações:"
+
+msgid "Active"
+msgstr "Ativo"
+
+msgid "Active Products"
+msgstr "Produtos Ativos"
+
+msgid "Add item"
+msgstr "Adicionar item"
+
+msgid "Add stock movement"
+msgstr "Adicionar movimentação de estoque"
+
+msgid "Address"
+msgstr "Endereço"
+
+msgid "Address:"
+msgstr "Endereço:"
+
+msgid "Alerts Center"
+msgstr "Central de Alertas"
+
+msgid "All Orders"
+msgstr "Todos os Pedidos"
+
+msgid "Already have an account? Login!"
+msgstr "Já tem uma conta? Entre!"
+
+msgid "Availability updated successfully."
+msgstr "Disponibilidade atualizada com sucesso."
+
+msgid "Available"
+msgstr "Disponível"
+
+msgid "Back to Customers"
+msgstr "Voltar para Clientes"
+
+msgid "Back to Dashboard"
+msgstr "Voltar ao Painel"
+
+msgid "Back to Orders"
+msgstr "Voltar para Pedidos"
+
+msgid "Birthday"
+msgstr "Data de nascimento"
+
+msgid "Birthday:"
+msgstr "Data de nascimento:"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Canceled"
+msgstr "Cancelado"
+
+msgid "Categories"
+msgstr "Categorias"
+
+msgid "Category"
+msgstr "Categoria"
+
+msgid "Category Information"
+msgstr "Informações da Categoria"
+
+msgid "Category created successfully."
+msgstr "Categoria criada com sucesso."
+
+msgid "Category deleted successfully."
+msgstr "Categoria excluída com sucesso."
+
+msgid "Category updated successfully."
+msgstr "Categoria atualizada com sucesso."
+
+msgid "Category:"
+msgstr "Categoria:"
+
+msgid "Change Password"
+msgstr "Alterar Senha"
+
+msgid "Change language"
+msgstr "Alterar idioma"
+
+msgid "City"
+msgstr "Cidade"
+
+msgid "City:"
+msgstr "Cidade:"
+
+msgid "Close"
+msgstr "Fechar"
+
+msgid "Completed"
+msgstr "Concluído"
+
+msgid "Confirm Password"
+msgstr "Confirmar Senha"
+
+msgid "Create Order"
+msgstr "Criar Pedido"
+
+msgid "Create User"
+msgstr "Criar Usuário"
+
+msgid "Created at"
+msgstr "Criado em"
+
+msgid "Created by"
+msgstr "Criado por"
+
+msgid "Customer"
+msgstr "Cliente"
+
+msgid "Customer Information"
+msgstr "Informações do Cliente"
+
+msgid "Customer created successfully."
+msgstr "Cliente criado com sucesso."
+
+msgid "Customer deleted successfully."
+msgstr "Cliente excluído com sucesso."
+
+msgid "Customer updated successfully."
+msgstr "Cliente atualizado com sucesso."
+
+msgid "Customer:"
+msgstr "Cliente:"
+
+msgid "Customers"
+msgstr "Clientes"
+
+msgid "Dashboard"
+msgstr "Painel"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Delete"
+msgstr "Excluir"
+
+msgid "Delete this category?"
+msgstr "Excluir esta categoria?"
+
+msgid "Delete this customer?"
+msgstr "Excluir este cliente?"
+
+msgid "Delete this order?"
+msgstr "Excluir este pedido?"
+
+msgid "Delete this product?"
+msgstr "Excluir este produto?"
+
+msgid "Delete this user?"
+msgstr "Excluir este usuário?"
+
+msgid "Deleted Product"
+msgstr "Produto Excluído"
+
+msgid "Divorced"
+msgstr "Divorciado"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Edit Order"
+msgstr "Editar Pedido"
+
+msgid "Edit User"
+msgstr "Editar Usuário"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email:"
+msgstr "E-mail:"
+
+msgid "English"
+msgstr "Inglês"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Female"
+msgstr "Feminino"
+
+msgid "Finished Orders"
+msgstr "Pedidos Finalizados"
+
+msgid "First name"
+msgstr "Nome"
+
+msgid "First name:"
+msgstr "Nome:"
+
+msgid "FluxOS Login"
+msgstr "Login do FluxOS"
+
+msgid "Forgot Password?"
+msgstr "Esqueceu a senha?"
+
+msgid "Forgot Your Password?"
+msgstr "Esqueceu sua senha?"
+
+msgid "Gender"
+msgstr "Gênero"
+
+msgid "Gender:"
+msgstr "Gênero:"
+
+msgid "House Number"
+msgstr "Número"
+
+msgid "House Number:"
+msgstr "Número:"
+
+msgid ""
+"If you haven't received an email, please make sure you provided the address "
+"you are registered with, and check your spam folder."
+msgstr ""
+"Se você não recebeu um e-mail, verifique se informou o endereço com o qual "
+"está cadastrado e confira sua pasta de spam."
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "It looks like you found a glitch in the matrix..."
+msgstr "Parece que você encontrou uma falha na matriz..."
+
+msgid "Last name"
+msgstr "Sobrenome"
+
+msgid "Last name:"
+msgstr "Sobrenome:"
+
+msgid "Log Out"
+msgstr "Sair"
+
+msgid "Login"
+msgstr "Entrar"
+
+msgid "Logout"
+msgstr "Sair"
+
+msgid "Low"
+msgstr "Baixo"
+
+msgid "Low Stock"
+msgstr "Estoque Baixo"
+
+msgid "Low Stock Products"
+msgstr "Produtos com Estoque Baixo"
+
+msgid "Low stock products:"
+msgstr "Produtos com estoque baixo:"
+
+msgid "Low stock threshold"
+msgstr "Limite de estoque baixo"
+
+msgid "Low stock threshold:"
+msgstr "Limite de estoque baixo:"
+
+msgid "Male"
+msgstr "Masculino"
+
+msgid "Manage your categories for your registered products"
+msgstr "Gerencie as categorias dos seus produtos cadastrados"
+
+msgid "Manage your customers"
+msgstr "Gerencie seus clientes"
+
+msgid "Manage your orders and customer information"
+msgstr "Gerencie seus pedidos e as informações dos clientes"
+
+msgid "Manage your stock and registered products"
+msgstr "Gerencie seu estoque e produtos cadastrados"
+
+msgid "Manage your users and registered roles"
+msgstr "Gerencie seus usuários e funções cadastradas"
+
+msgid "Manage:"
+msgstr "Gerenciar:"
+
+msgid "Marital Status"
+msgstr "Estado Civil"
+
+msgid "Marital Status:"
+msgstr "Estado Civil:"
+
+msgid "Married"
+msgstr "Casado"
+
+msgid "Movement type"
+msgstr "Tipo de movimentação"
+
+msgid "Movement type:"
+msgstr "Tipo de movimentação:"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Name:"
+msgstr "Nome:"
+
+msgid "No"
+msgstr "Não"
+
+msgid "No Orders Available."
+msgstr "Nenhum pedido disponível."
+
+msgid "No alerts"
+msgstr "Nenhum alerta"
+
+msgid "No categories available."
+msgstr "Nenhuma categoria disponível."
+
+msgid "No customers available."
+msgstr "Nenhum cliente disponível."
+
+msgid "No items in this order."
+msgstr "Nenhum item neste pedido."
+
+msgid "No low stock products."
+msgstr "Nenhum produto com estoque baixo."
+
+msgid "No orders available."
+msgstr "Nenhum pedido disponível."
+
+msgid "No orders for this customer."
+msgstr "Nenhum pedido para este cliente."
+
+msgid "No products available."
+msgstr "Nenhum produto disponível."
+
+msgid "No stock movements available."
+msgstr "Nenhuma movimentação de estoque disponível."
+
+msgid "No users available."
+msgstr "Nenhum usuário disponível."
+
+msgid "Not enough stock for this movement."
+msgstr "Estoque insuficiente para esta movimentação."
+
+msgid "Order"
+msgstr "Pedido"
+
+msgid "Order %(number)s for %(customer)s"
+msgstr "Pedido %(number)s para %(customer)s"
+
+msgid "Order History"
+msgstr "Histórico de Pedidos"
+
+msgid "Order ID"
+msgstr "ID do Pedido"
+
+msgid "Order Information"
+msgstr "Informações do Pedido"
+
+msgid "Order Item"
+msgstr "Item do Pedido"
+
+msgid "Order Items"
+msgstr "Itens do Pedido"
+
+msgid "Order Number"
+msgstr "Número do Pedido"
+
+msgid "Order Number:"
+msgstr "Número do Pedido:"
+
+msgid "Order created successfully."
+msgstr "Pedido criado com sucesso."
+
+msgid "Order deleted successfully."
+msgstr "Pedido excluído com sucesso."
+
+msgid "Order updated successfully."
+msgstr "Pedido atualizado com sucesso."
+
+msgid "Orders"
+msgstr "Pedidos"
+
+msgid "Other"
+msgstr "Outro"
+
+msgid "Page Not Found"
+msgstr "Página Não Encontrada"
+
+msgid "Password"
+msgstr "Senha"
+
+msgid "Password Change"
+msgstr "Alterar Senha"
+
+msgid "Password Change Done"
+msgstr "Senha Alterada"
+
+msgid "Password Reset Sent"
+msgstr "Redefinição de Senha Enviada"
+
+msgid "Pending"
+msgstr "Pendente"
+
+msgid "Pending Orders"
+msgstr "Pedidos Pendentes"
+
+msgid "Phone"
+msgstr "Telefone"
+
+msgid "Phone:"
+msgstr "Telefone:"
+
+msgid "Please enter your current password and a new password."
+msgstr "Digite sua senha atual e uma nova senha."
+
+msgid "Portuguese (Brazil)"
+msgstr "Português (Brasil)"
+
+msgid "Price"
+msgstr "Preço"
+
+msgid "Price:"
+msgstr "Preço:"
+
+msgid "Product"
+msgstr "Produto"
+
+msgid "Product Information"
+msgstr "Informações do Produto"
+
+msgid "Product created successfully."
+msgstr "Produto criado com sucesso."
+
+msgid "Product deleted successfully."
+msgstr "Produto excluído com sucesso."
+
+msgid "Product updated successfully."
+msgstr "Produto atualizado com sucesso."
+
+msgid "Product:"
+msgstr "Produto:"
+
+msgid "Products"
+msgstr "Produtos"
+
+msgid "Products Out of Stock"
+msgstr "Produtos Sem Estoque"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Profile Picture"
+msgstr "Foto do Perfil"
+
+msgid "Profile updated successfully."
+msgstr "Perfil atualizado com sucesso."
+
+msgid "Quantity"
+msgstr "Quantidade"
+
+msgid "Quantity must be greater than zero."
+msgstr "A quantidade deve ser maior que zero."
+
+msgid "Quantity:"
+msgstr "Quantidade:"
+
+msgid "Ready to Delete?"
+msgstr "Pronto para excluir?"
+
+msgid "Ready to Leave?"
+msgstr "Pronto para sair?"
+
+msgid "Reason"
+msgstr "Motivo"
+
+msgid "Reason:"
+msgstr "Motivo:"
+
+msgid "Recent Orders"
+msgstr "Pedidos Recentes"
+
+msgid "Register Customer"
+msgstr "Cadastrar Cliente"
+
+msgid "Register Movement"
+msgstr "Registrar Movimentação"
+
+msgid "Register Order"
+msgstr "Cadastrar Pedido"
+
+msgid "Register Product"
+msgstr "Cadastrar Produto"
+
+msgid "Register customer"
+msgstr "Cadastrar cliente"
+
+msgid "Register new user"
+msgstr "Cadastrar novo usuário"
+
+msgid "Register product"
+msgstr "Cadastrar produto"
+
+msgid "Register user"
+msgstr "Cadastrar usuário"
+
+msgid "Register your first customer"
+msgstr "Cadastre seu primeiro cliente"
+
+msgid "Remember Me"
+msgstr "Lembrar de mim"
+
+msgid "Reset Password"
+msgstr "Redefinir Senha"
+
+msgid "Return to Profile"
+msgstr "Voltar ao Perfil"
+
+msgid "Returned"
+msgstr "Devolvido"
+
+msgid "Revenue (Annual)"
+msgstr "Receita (Anual)"
+
+msgid "Revenue (Monthly)"
+msgstr "Receita (Mensal)"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "SKU:"
+msgstr "SKU:"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "Search"
+msgstr "Pesquisar"
+
+msgid "Search for..."
+msgstr "Pesquisar..."
+
+msgid "Select \"Delete\" below if you are ready to remove the product:"
+msgstr "Selecione \"Excluir\" abaixo se desejar remover o produto:"
+
+msgid "Select \"Logout\" below if you are ready to end your current session."
+msgstr "Selecione \"Sair\" abaixo se desejar encerrar sua sessão atual."
+
+msgid "Set as available"
+msgstr "Definir como disponível"
+
+msgid "Set as unavailable"
+msgstr "Definir como indisponível"
+
+msgid "Shipped"
+msgstr "Enviado"
+
+msgid "Shipping Information"
+msgstr "Informações de Envio"
+
+msgid "Show All Alerts"
+msgstr "Mostrar Todos os Alertas"
+
+msgid "Show all orders"
+msgstr "Mostrar todos os pedidos"
+
+msgid "Show all products"
+msgstr "Mostrar todos os produtos"
+
+msgid "Showing products at or below their low stock threshold."
+msgstr "Mostrando produtos no limite ou abaixo do estoque mínimo."
+
+msgid "Single"
+msgstr "Solteiro"
+
+msgid "Staff"
+msgstr "Equipe"
+
+msgid "State"
+msgstr "Estado"
+
+msgid "State:"
+msgstr "Estado:"
+
+msgid "Statistics"
+msgstr "Estatísticas"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status:"
+msgstr "Status:"
+
+msgid "Stock"
+msgstr "Estoque"
+
+msgid "Stock In"
+msgstr "Entrada de Estoque"
+
+msgid "Stock Movement"
+msgstr "Movimentação de Estoque"
+
+msgid "Stock Movements"
+msgstr "Movimentações de Estoque"
+
+msgid "Stock Out"
+msgstr "Saída de Estoque"
+
+msgid "Stock Value"
+msgstr "Valor do Estoque"
+
+msgid "Stock movement"
+msgstr "Movimentação de estoque"
+
+msgid "Stock movement registered successfully."
+msgstr "Movimentação de estoque registrada com sucesso."
+
+msgid "Stock movements"
+msgstr "Movimentações de estoque"
+
+msgid "Stock movements cannot be edited. Create a new movement instead."
+msgstr ""
+"Movimentações de estoque não podem ser editadas. Crie uma nova movimentação."
+
+msgid "Street"
+msgstr "Rua"
+
+msgid "Street:"
+msgstr "Rua:"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "The last superuser cannot be deleted."
+msgstr "O último superusuário não pode ser excluído."
+
+msgid "The two password fields did not match."
+msgstr "Os dois campos de senha não coincidem."
+
+msgid "Threshold"
+msgstr "Limite"
+
+msgid "Top Customers"
+msgstr "Principais Clientes"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total Orders"
+msgstr "Total de Pedidos"
+
+msgid "Total Orders:"
+msgstr "Total de Pedidos:"
+
+msgid "Total Spent"
+msgstr "Total Gasto"
+
+msgid "Total Spent:"
+msgstr "Total Gasto:"
+
+msgid "Total Stock Quantity"
+msgstr "Quantidade Total em Estoque"
+
+msgid "Total:"
+msgstr "Total:"
+
+msgid "Track stock entries and exits."
+msgstr "Acompanhe entradas e saídas de estoque."
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Unit Price"
+msgstr "Preço Unitário"
+
+msgid "Unknown Customer"
+msgstr "Cliente Desconhecido"
+
+msgid "User Info"
+msgstr "Informações do Usuário"
+
+msgid "User Information"
+msgstr "Informações do Usuário"
+
+msgid "User created successfully."
+msgstr "Usuário criado com sucesso."
+
+msgid "User deleted successfully."
+msgstr "Usuário excluído com sucesso."
+
+msgid "User updated successfully."
+msgstr "Usuário atualizado com sucesso."
+
+msgid "Username"
+msgstr "Nome de usuário"
+
+msgid "Username:"
+msgstr "Nome de usuário:"
+
+msgid "Users"
+msgstr "Usuários"
+
+msgid "View all"
+msgstr "Ver todos"
+
+msgid ""
+"We get it, stuff happens. Just enter your email address below and we'll send"
+" you a link to reset your password!"
+msgstr ""
+"Acontece. Basta informar seu e-mail abaixo e enviaremos um link para "
+"redefinir sua senha!"
+
+msgid ""
+"We've sent you an email with instructions on how to set up your password, if"
+" an account already exists with the email address you provided. You will "
+"receive the message shortly."
+msgstr ""
+"Enviamos um e-mail com instruções para definir sua senha, caso já exista uma"
+" conta com o endereço informado. Você receberá a mensagem em breve."
+
+msgid "Welcome back! Please enter your credentials to access the system."
+msgstr "Bem-vindo de volta! Informe suas credenciais para acessar o sistema."
+
+msgid "Widowed"
+msgstr "Viúvo"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "You cannot deactivate your own account."
+msgstr "Você não pode desativar sua própria conta."
+
+msgid "You cannot delete your own account."
+msgstr "Você não pode excluir sua própria conta."
+
+msgid "Your password has been changed successfully."
+msgstr "Sua senha foi alterada com sucesso."
+
+msgid "birthday"
+msgstr "data de nascimento"
+
+msgid "city"
+msgstr "cidade"
+
+msgid "customer"
+msgstr "cliente"
+
+msgid "gender"
+msgstr "gênero"
+
+msgid "house number"
+msgstr "número"
+
+msgid "in stock"
+msgstr "em estoque"
+
+msgid "items"
+msgstr "itens"
+
+msgid "marital status"
+msgstr "estado civil"
+
+msgid "name"
+msgstr "nome"
+
+msgid "order"
+msgstr "pedido"
+
+msgid "order date"
+msgstr "data do pedido"
+
+msgid "order number"
+msgstr "número do pedido"
+
+msgid "pending orders"
+msgstr "pedidos pendentes"
+
+msgid "phone"
+msgstr "telefone"
+
+msgid "product"
+msgstr "produto"
+
+msgid "quantity"
+msgstr "quantidade"
+
+msgid "state"
+msgstr "estado"
+
+msgid "status"
+msgstr "status"
+
+msgid "street"
+msgstr "rua"
+
+msgid "total orders"
+msgstr "total de pedidos"
+
+msgid "total spent"
+msgstr "total gasto"

@@ -1,31 +1,32 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Gestech - Orders{% endblock %}
+{% block title %}Gestech - {% if status_label %}{{ status_label }}{% else %}{% translate "Orders" %}{% endif %}{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <div>
-            <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+            <h1 class="h3 mb-2 text-gray-800">
+                {% if status_label %}{{ status_label }}{% else %}{% translate "Orders" %}{% endif %}
+            </h1>
             <p class="mb-4">
-                Manage your orders and customer information <br>
+                {% translate "Manage your orders and customer information" %}
+                {% if status %}
+                <a href="{% url 'orders_index' %}">{% translate "Show all orders" %}</a>
+                {% endif %}
             </p>
         </div>
         <a href="{% url 'create_order' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Create Order </a>
-
+                class="fas fa-plus fa-sm text-white-50"></i> {% translate "Create Order" %} </a>
     </div>
 
-
-    <!-- Products Table -->
     <div class="card shadow mb-4">
-        <!-- Card Header -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Orders</h6>
+            <h6 class="m-0 font-weight-bold text-primary">
+                {% if status_label %}{{ status_label }}{% else %}{% translate "Orders" %}{% endif %}
+            </h6>
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,37 +34,33 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                     aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Actions:</div>
-                    <a class="dropdown-item" href="#">Export</a>
-                    <a class="dropdown-item" href="#">Import</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'create_order' %}">Register Order</a>
+                    <div class="dropdown-header">{% translate "Actions:" %}</div>
+                    <a class="dropdown-item" href="{% url 'create_order' %}">{% translate "Register Order" %}</a>
                 </div>
             </div>
         </div>
 
-        <!-- Card Body -->
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            
-                            <th>Actions</th>
+                            <th>{% translate "Order ID" %}</th>
+                            <th>{% translate "Customer" %}</th>
+                            <th>{% translate "Date" %}</th>
+                            <th>{% translate "Status" %}</th>
+                            <th>{% translate "Total" %}</th>
+                            <th>{% translate "Actions" %}</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            
-                            <th>Actions</th>
+                            <th>{% translate "Order ID" %}</th>
+                            <th>{% translate "Customer" %}</th>
+                            <th>{% translate "Date" %}</th>
+                            <th>{% translate "Status" %}</th>
+                            <th>{% translate "Total" %}</th>
+                            <th>{% translate "Actions" %}</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -71,13 +68,15 @@
                         <tr>
                             <td>{{ order.order_number }}</td>
                             <td>
-                                <a href="{% url 'view_product' order.id %}">
-                                    {{ order.customer.name }}
-                                </a> 
+                                {% if order.customer %}
+                                <a href="{% url 'view_customer' order.customer.id %}">{{ order.customer.name }}</a>
+                                {% else %}
+                                -
+                                {% endif %}
                             </td>
                             <td>{{ order.order_date }}</td>
-                            <td>{{ order.status }}</td>
-                        
+                            <td>{{ order.get_status_display }}</td>
+                            <td>R${{ order.total }}</td>
                             <td>
                                 <a href="{% url 'view_order' order.id %}" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-eye"></i>
@@ -85,18 +84,19 @@
                                 <a href="{% url 'edit_order' order.id %}" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-cancel"></i>
-                                </a>
-                                </button>
+                                <form method="post" action="{% url 'delete_order' order.id %}" class="d-inline" onsubmit="return confirm('{% translate "Delete this order?" %}');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="6">No Orders Available.</td>
+                            <td colspan="6">{% translate "No Orders Available." %}</td>
                         </tr>
                         {% endfor %}
-                        
                     </tbody>
                 </table>
             </div>
@@ -104,10 +104,6 @@
     </div>
 
 </div>
-
-<!-- Product Delete Modal -->
-<!-- Need to implement the delete modal here -->
-
 {% endblock %}
 
 {% block extra_scripts %}

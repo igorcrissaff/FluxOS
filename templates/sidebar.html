@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
@@ -16,7 +16,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'dashboard' %}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>{% translate "Dashboard" %}</span>
         </a>
     </li>
 
@@ -25,13 +25,15 @@
         <a class="nav-link collapsed" href="{% url 'stock_index' %}" data-toggle="collapse" data-target="#collapseStock"
             aria-expanded="true" aria-controls="collapseStock">
             <i class="fas fa-fw fa-boxes"></i>
-            <span>Stock</span>
+            <span>{% translate "Stock" %}</span>
         </a>
         <div id="collapseStock" class="collapse" aria-labelledby="headingStock" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="{% url 'stock_index' %}">Products</a>
-                <a class="collapse-item" href="{% url 'categories' %}">Categories</a>
+                <h6 class="collapse-header">{% translate "Manage:" %}</h6>
+                <a class="collapse-item" href="{% url 'stock_index' %}">{% translate "Products" %}</a>
+                <a class="collapse-item" href="{% url 'categories' %}">{% translate "Categories" %}</a>
+                <a class="collapse-item" href="{% url 'movements' %}">{% translate "Stock Movements" %}</a>
+                <a class="collapse-item" href="{% url 'stock_index' %}?low_stock=1">{% translate "Low Stock" %}</a>
             </div>
         </div>
     </li>
@@ -41,72 +43,37 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrders"
             aria-expanded="true" aria-controls="collapseOrders">
             <i class="fas fa-fw fa-shopping-cart"></i>
-            <span>Orders</span>
+            <span>{% translate "Orders" %}</span>
         </a>
         <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="{% url 'orders_index' %}">All Orders</a>
-                <a class="collapse-item" href="#">Pending Orders</a>
-                <a class="collapse-item" href="#">Finished Orders</a>
+                <h6 class="collapse-header">{% translate "Manage:" %}</h6>
+                <a class="collapse-item" href="{% url 'orders_index' %}">{% translate "All Orders" %}</a>
+                <a class="collapse-item" href="{% url 'orders_index' %}?status=Pending">{% translate "Pending Orders" %}</a>
+                <a class="collapse-item" href="{% url 'orders_index' %}?status=Completed">{% translate "Finished Orders" %}</a>
             </div>
         </div>
     </li>
     
-    <!-- Nav Item - Finances Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFinances"
-            aria-expanded="true" aria-controls="collapseFinances">
-            <i class="fas fa-fw fa-coins"></i>
-            <span>Finances</span>
-        </a>
-        <div id="collapseFinances" class="collapse" aria-labelledby="headingFinances"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="#">Sales</a>
-                <a class="collapse-item" href="#">Expenses</a>
-                <a class="collapse-item" href="#">Accounts Payable</a>
-                <a class="collapse-item" href="#">Accounts Receivable</a>
-            </div>
-        </div>
-    </li>
-
-
     <!-- Nav Item - Customers -->
     <li class="nav-item">
         <a class="nav-link" href="{% url 'customers_index' %}">
             <i class="fas fa-fw fa-users"></i>
-            <span>Customers</span>
+            <span>{% translate "Customers" %}</span>
         </a>
     </li>
 
 
-    <!-- Nav Item - Users Collapse Menu -->
+    {% if request.user.is_staff %}
+    <!-- Nav Item - Users -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-            aria-expanded="true" aria-controls="collapseUsers">
+        <a class="nav-link" href="{% url 'users_index' %}">
             <i class="fas fa-fw fa-users"></i>
-            <span>Users</span>
-        </a>
-        <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage:</h6>
-                <a class="collapse-item" href="#">Users</a>
-                <a class="collapse-item" href="#">Roles</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Settings -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-cogs"></i>
-            <span>Settings</span>
+            <span>{% translate "Users" %}</span>
         </a>
     </li>
+    {% endif %}
 
     
 

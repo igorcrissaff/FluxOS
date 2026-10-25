@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Gestech - Estoque{% endblock %}
+{% block title %}Gestech - {% translate "Users" %}{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Users</h1>
+    <h1 class="h3 mb-2 text-gray-800">{% translate "Users" %}</h1>
     <p class="mb-4">
-        Manage your users and registered roles <br>
-        <a href="{% url 'create_user' %}">Register new user</a>.
+        {% translate "Manage your users and registered roles" %} <br>
+        <a href="{% url 'create_user' %}">{% translate "Register new user" %}</a>.
     </p>
 
 
@@ -18,21 +18,10 @@
     <div class="card shadow mb-4">
         <!-- Card Header -->
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Products</h6>
-            <div class="dropdown no-arrow">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                    aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Actions:</div>
-                    <a class="dropdown-item" href="#">Export</a>
-                    <a class="dropdown-item" href="#">Import</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'create_user' %}">Register user</a>
-                </div>
-            </div>
+            <h6 class="m-0 font-weight-bold text-primary">{% translate "Users" %}</h6>
+            <a href="{% url 'create_user' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-plus fa-sm text-white-50"></i> {% translate "Register user" %}
+            </a>
         </div>
 
         <!-- Card Body -->
@@ -41,41 +30,53 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>{% translate "Username" %}</th>
+                            <th>{% translate "Name" %}</th>
+                            <th>{% translate "Email" %}</th>
+                            <th>{% translate "Staff" %}</th>
                             
-                            <th>Actions</th>
+                            <th>{% translate "Actions" %}</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>{% translate "Username" %}</th>
+                            <th>{% translate "Name" %}</th>
+                            <th>{% translate "Email" %}</th>
+                            <th>{% translate "Staff" %}</th>
                             
-                            <th>Actions</th>
+                            <th>{% translate "Actions" %}</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for user in users %}
                         <tr>
                             <td>{{ user.username }}</td>
-                            <td>{{ user.first_name }}</td>
+                            <td>{{ user.get_full_name|default:user.first_name }}</td>
                             <td>{{ user.email }}</td>
+                            <td>
+                                {% if user.is_staff %}
+                                <span class="badge badge-success">{% translate "Yes" %}</span>
+                                {% else %}
+                                <span class="badge badge-secondary">{% translate "No" %}</span>
+                                {% endif %}
+                            </td>
                         
                             <td>
-                                <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                <a href="{% url 'edit_user' user.id %}" class="btn btn-warning btn-circle btn-sm">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
+                                <form method="post" action="{% url 'delete_user' user.id %}" class="d-inline" onsubmit="return confirm('{% translate "Delete this user?" %}');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="6">No products available.</td>
+                            <td colspan="5">{% translate "No users available." %}</td>
                         </tr>
                         {% endfor %}
                         

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Gestech - {% translate "Stock Movements" %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h3 mb-2 text-gray-800">{% translate "Stock Movements" %}</h1>
+            <p class="mb-4">{% translate "Track stock entries and exits." %}</p>
+        </div>
+        <a href="{% url 'create_movement' %}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i class="fas fa-plus fa-sm text-white-50"></i> {% translate "Register Movement" %}
+        </a>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">{% translate "Stock Movements" %}</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>{% translate "Date" %}</th>
+                            <th>{% translate "Product" %}</th>
+                            <th>{% translate "Type" %}</th>
+                            <th>{% translate "Quantity" %}</th>
+                            <th>{% translate "Reason" %}</th>
+                            <th>{% translate "Created by" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for movement in movements %}
+                        <tr>
+                            <td>{{ movement.created_at }}</td>
+                            <td>
+                                <a href="{% url 'edit_product' movement.product.id %}">{{ movement.product }}</a>
+                            </td>
+                            <td>
+                                {% if movement.movement_type == 'in' %}
+                                <span class="badge badge-success">{{ movement.get_movement_type_display }}</span>
+                                {% else %}
+                                <span class="badge badge-danger">{{ movement.get_movement_type_display }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ movement.delta }}</td>
+                            <td>{{ movement.reason|default:"-" }}</td>
+                            <td>{{ movement.created_by|default:"-" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6">{% translate "No stock movements available." %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+{% endblock %}

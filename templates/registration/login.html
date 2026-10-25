@@ -1,8 +1,9 @@
 {% load widget_tweaks %}
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 
 {% block extra_head %}
     {% include "head.html" %}
@@ -11,6 +12,10 @@
 <body class="bg-gradient-primary">
 
     <div class="container">
+
+        <div class="d-flex justify-content-end pt-3">
+            {% include "language_selector.html" %}
+        </div>
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -21,37 +26,33 @@
                         <!-- Nested Row within Card Body -->
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">FluxOS Login</h1>
-                                <p>Welcome back! Please enter your credentials to access the system.</p>
+                                <h1 class="h4 text-gray-900 mb-4">{% translate "FluxOS Login" %}</h1>
+                                <p>{% translate "Welcome back! Please enter your credentials to access the system." %}</p>
                             </div>
                             <form class="user" method="post">
                                 {% csrf_token %}
 
+                                {{ form.non_field_errors }}
+
                                 <div class="form-group">
+                                    <label class="small mb-1" for="{{ form.username.id_for_label }}">{% translate "Username" %}</label>
                                     {{ form.username | add_class:"form-control form-control-user" }}
                                     {{ form.username.errors }}
                                 </div>
                                 <div class="form-group">
+                                    <label class="small mb-1" for="{{ form.password.id_for_label }}">{% translate "Password" %}</label>
                                     {{ form.password | add_class:"form-control form-control-user" }}
                                     {{ form.password.errors }}
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="custom-control custom-checkbox small">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                                        <label class="custom-control-label" for="customCheck">Remember
-                                            Me</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">{% translate "Login" %}</button>
                                 </div>
                                 
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="{% url 'password_reset' %}">Forgot Password?</a>
+                                <a class="small" href="{% url 'password_reset' %}">{% translate "Forgot Password?" %}</a>
                             </div>
                         </div>
                     </div>

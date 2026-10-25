@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Gestech - {% translate "Order" %} {{ order.order_number }}{% endblock %}
+
+{% block content %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <div>
+        <h1 class="h3 mb-2 text-gray-800">{% translate "Order" %} {{ order.order_number }}</h1>
+        <p class="mb-4">{{ order.order_date }}</p>
+    </div>
+    <div>
+        <a href="{% url 'edit_order' order.id %}" class="btn btn-warning btn-sm shadow-sm">
+            <i class="fas fa-pen fa-sm text-white-50"></i> {% translate "Edit" %}
+        </a>
+        <form method="post" action="{% url 'delete_order' order.id %}" class="d-inline" onsubmit="return confirm('{% translate "Delete this order?" %}');">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm shadow-sm">
+                <i class="fas fa-trash fa-sm text-white-50"></i> {% translate "Delete" %}
+            </button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{% translate "Order Items" %}</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>{% translate "Product" %}</th>
+                                <th>{% translate "Unit Price" %}</th>
+                                <th>{% translate "Quantity" %}</th>
+                                <th>{% translate "Subtotal" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.orderitem_set.all %}
+                            <tr>
+                                <td>
+                                    {% if item.product %}
+                                    <a href="{% url 'edit_product' item.product.id %}">{{ item.product }}</a>
+                                    {% else %}
+                                    {% translate "Deleted Product" %}
+                                    {% endif %}
+                                </td>
+                                <td>R${{ item.product.price|default:"0.00" }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>R${{ item.subtotal }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4">{% translate "No items in this order." %}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3" class="text-right">{% translate "Total" %}</th>
+                                <th>R${{ order.total }}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{% translate "Order Information" %}</h6>
+            </div>
+            <div class="card-body">
+                <p>
+                    <strong>{% translate "Customer:" %}</strong>
+                    {% if order.customer %}
+                    <a href="{% url 'view_customer' order.customer.id %}">{{ order.customer.name }}</a>
+                    {% else %}
+                    -
+                    {% endif %}
+                </p>
+                <p><strong>{% translate "Status:" %}</strong> {{ order.get_status_display }}</p>
+                <p class="mb-0"><strong>{% translate "Total:" %}</strong> R${{ order.total }}</p>
+            </div>
+        </div>
+        <a href="{% url 'orders_index' %}" class="btn btn-secondary btn-block">{% translate "Back to Orders" %}</a>
+    </div>
+</div>
+{% endblock %}

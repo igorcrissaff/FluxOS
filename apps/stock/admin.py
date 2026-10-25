@@ -1,28 +1,45 @@
 from django.contrib import admin
-from .models import Category, Product
+from django.utils.translation import gettext_lazy as _
+
+from .models import Category, Movement, Product
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name',)
+    search_fields = ('name',)
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    search_fields = ('id__startswith', 'name__startswith')
-    list_display = ('id', 'sku', 'name', 'price', 'quantity', 'category')
-    list_filter = ('category',)
-    actions = ['set_avaliable', 'set_unavaliabe']
+    search_fields = ('sku', 'name')
+    list_display = ('id', 'sku', 'name', 'price', 'quantity', 'low_stock_threshold', 'available', 'category')
+    list_filter = ('available', 'category')
+    actions = ['set_available', 'set_unavailable']
 
-    @admin.action(description='Definir como Disponivel')
-    def set_avaliable(self, request, queryset):
-        queryset.update(avaliable=True)
-        self.message_user(request, "Disponibilidade definida com sucesso.")
+    @admin.action(description=_('Set as available'))
+    def set_available(self, request, queryset):
+        queryset.update(available=True)
+        self.message_user(request, _('Availability updated successfully.'))
 
-    @admin.action(description='Definir como Indisponivel')
-    def set_unavaliabe(self, request, queryset):
-        queryset.update(avaliable=False)
-        self.message_user(request, "Disponibilidade definida com sucesso.")
+    @admin.action(description=_('Set as unavailable'))
+    def set_unavailable(self, request, queryset):
+        queryset.update(available=False)
+        self.message_user(request, _('Availability updated successfully.'))
 
-"""@admin.register(Movement)
+
+@admin.register(Movement)
 class MovementAdmin(admin.ModelAdmin):
-    readonly_fields = ('product', 'quantity', 'date')
-    list_display = ('product', 'quantity', 'date')"""
+    list_display = ('product', 'movement_type', 'quantity', 'reason', 'created_by', 'created_at')
+    list_filter = ('movement_type', 'created_at')
+    search_fields = ('product__sku', 'product__name', 'reason')
+    readonly_fields = ('product', 'movement_type', 'quantity', 'reason', 'created_by', 'created_at')
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
